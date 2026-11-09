@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PackagesManager } from "@/components/admin/packages-manager";
+import { PricingRules } from "@/components/admin/pricing-rules";
 import { PACKAGES, type PackageTier } from "@/lib/data";
 import { en } from "@/lib/i18n/en";
 
@@ -21,7 +22,8 @@ export default function PackagesAdminPage() {
         Adjust starting prices and inclusions for Regular, Premium, and VIP.
         Changes apply to the public package pages and booking form.
       </p>
-      <div className="mt-8">
+      <div className="mt-8 space-y-8">
+        <PricingRules sampleBase={400000} />
         <PackagesManager initial={initial} />
       </div>
     </div>

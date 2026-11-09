@@ -3,7 +3,15 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Calculator, Check } from "lucide-react";
-import { formatRupiah, type Car, type PackageTier } from "@/lib/data";
+import {
+  DAY_MULTIPLIERS,
+  HOLIDAY_MULTIPLIER,
+  estimateRental,
+  formatRupiah,
+  roundRate,
+  type Car,
+  type PackageTier,
+} from "@/lib/data";
 import type { Dictionary } from "@/lib/i18n/en";
 
 export function BookingForm({
@@ -26,17 +34,12 @@ export function BookingForm({
     : [];
   const selectedCar = carOptions.find((c) => c.slug === car) ?? null;
 
-  let days = 0;
-  if (pickup && dropoff) {
-    const a = new Date(pickup).getTime();
-    const b = new Date(dropoff).getTime();
-    if (!Number.isNaN(a) && !Number.isNaN(b) && b >= a) {
-      days = Math.round((b - a) / 86_400_000) + 1;
-    }
-  }
-
-  const total =
-    selectedCar && days > 0 ? selectedCar.pricePerDay * days : null;
+  const estimate =
+    selectedCar && pickup && dropoff
+      ? estimateRental(selectedCar.pricePerDay, pickup, dropoff)
+      : null;
+  const days = estimate?.days ?? 0;
+  const total = estimate && estimate.days > 0 ? estimate.total : null;
 
   function onPackageChange(value: string) {
     setPkg(value);
@@ -197,35 +200,66 @@ export function BookingForm({
             </Field>
 
             {/* Live price estimate */}
-            <div className="sm:col-span-2">
+            <div className="space-y-4 sm:col-span-2">
               <AnimatePresence mode="wait">
-                {total !== null && selectedCar ? (
+                {total !== null && selectedCar && estimate ? (
                   <motion.div
-                    key={`${selectedCar.slug}-${days}`}
+                    key={`${selectedCar.slug}-${days}-${total}`}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-accent/30 bg-accent/5 p-5"
+                    className="rounded-xl border border-accent/30 bg-accent/5 p-5"
                   >
-                    <div className="flex items-start gap-3">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-paper">
-                        <Calculator className="h-4 w-4" aria-hidden />
-                      </span>
-                      <div>
-                        <p className="label text-muted">
-                          {form.estimate.title}
-                        </p>
-                        <p className="mt-1 text-sm text-muted">
-                          {selectedCar.brand} {selectedCar.name} ·{" "}
-                          {formatRupiah(selectedCar.pricePerDay)} × {days}{" "}
-                          {days === 1 ? form.estimate.day : form.estimate.days}
-                        </p>
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                      <div className="flex items-start gap-3">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-paper">
+                          <Calculator className="h-4 w-4" aria-hidden />
+                        </span>
+                        <div>
+                          <p className="label text-muted">
+                            {form.estimate.title}
+                          </p>
+                          <p className="mt-1 text-sm text-muted">
+                            {selectedCar.brand} {selectedCar.name} ·{" "}
+                            {estimate.holidayDays > 0
+                              ? `${estimate.days - estimate.holidayDays} + ${estimate.holidayDays} ${form.estimate.holiday}`
+                              : `${estimate.days} ${
+                                  estimate.days === 1
+                                    ? form.estimate.day
+                                    : form.estimate.days
+                                }`}
+                          </p>
+                        </div>
                       </div>
+                      <p className="font-mono text-2xl font-semibold">
+                        {formatRupiah(total)}
+                      </p>
                     </div>
-                    <p className="font-mono text-2xl font-semibold">
-                      {formatRupiah(total)}
-                    </p>
+
+                    <ul className="mt-4 space-y-1.5 border-t border-accent/20 pt-3">
+                      {estimate.lines.map((line) => (
+                        <li
+                          key={`${line.rate}-${line.holiday}`}
+                          className="flex items-center justify-between gap-3 text-xs text-muted"
+                        >
+                          <span className="flex items-center gap-2">
+                            {formatRupiah(line.rate)} × {line.days}{" "}
+                            {line.days === 1
+                              ? form.estimate.day
+                              : form.estimate.days}
+                            {line.holiday && (
+                              <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-medium text-amber-700">
+                                {form.estimate.holiday}
+                              </span>
+                            )}
+                          </span>
+                          <span className="font-mono">
+                            {formatRupiah(line.subtotal)}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </motion.div>
                 ) : (
                   <motion.p
@@ -237,6 +271,52 @@ export function BookingForm({
                   >
                     {form.estimate.note}
                   </motion.p>
+                )}
+              </AnimatePresence>
+
+              {/* Weekday + holiday rate strip */}
+              <AnimatePresence>
+                {selectedCar && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <p className="label mb-2 text-muted">
+                      {form.estimate.weekdayRates} — {selectedCar.brand}{" "}
+                      {selectedCar.name}
+                    </p>
+                    <div className="grid grid-cols-4 gap-2 sm:grid-cols-8">
+                      {form.estimate.weekdays.map((label, i) => (
+                        <div
+                          key={label}
+                          className="rounded-md border border-line bg-surface px-2 py-2 text-center"
+                        >
+                          <p className="label text-muted">{label}</p>
+                          <p className="mt-1 font-mono text-[11px]">
+                            {formatRupiah(
+                              roundRate(
+                                selectedCar.pricePerDay * DAY_MULTIPLIERS[i],
+                              ),
+                            )}
+                          </p>
+                        </div>
+                      ))}
+                      <div className="rounded-md border border-amber-300 bg-amber-50 px-2 py-2 text-center">
+                        <p className="label text-amber-700">
+                          {form.estimate.holiday}
+                        </p>
+                        <p className="mt-1 font-mono text-[11px] text-amber-800">
+                          {formatRupiah(
+                            roundRate(
+                              selectedCar.pricePerDay * HOLIDAY_MULTIPLIER,
+                            ),
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>

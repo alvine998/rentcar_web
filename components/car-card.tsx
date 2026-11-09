@@ -71,6 +71,7 @@ export function CarCard({
 
         <div className="mt-5 flex items-end justify-between gap-3 border-t border-line pt-4">
           <p>
+            <span className="text-xs text-muted">{common.from} </span>
             <span className="font-mono text-xl font-semibold">
               {formatRupiah(car.pricePerDay)}
             </span>

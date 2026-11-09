@@ -175,3 +175,103 @@ export function getCarsByPackage(slug: PackageTier): Car[] {
 export function formatRupiah(amount: number): string {
   return "Rp " + amount.toLocaleString("id-ID");
 }
+
+// ---------------------------------------------------------------------------
+// Dynamic pricing: per-weekday rates + public holiday rate
+// ---------------------------------------------------------------------------
+
+/** Multipliers per weekday, index 0 = Monday … 6 = Sunday */
+export const DAY_MULTIPLIERS = [0.95, 0.95, 1, 1, 1.15, 1.3, 1.2];
+
+export const HOLIDAY_MULTIPLIER = 1.5;
+
+export type Holiday = { date: string; name: string };
+
+export const HOLIDAYS: Holiday[] = [
+  { date: "2026-12-24", name: "Christmas Eve" },
+  { date: "2026-12-25", name: "Christmas Day" },
+  { date: "2026-12-26", name: "Christmas holiday" },
+  { date: "2026-12-31", name: "New Year's Eve" },
+  { date: "2027-01-01", name: "New Year's Day" },
+  { date: "2027-01-02", name: "New Year holiday" },
+];
+
+export function getHoliday(dateISO: string): Holiday | null {
+  return HOLIDAYS.find((h) => h.date === dateISO) ?? null;
+}
+
+export function roundRate(value: number): number {
+  return Math.round(value / 5000) * 5000;
+}
+
+/** Day-of-week multiplier for an ISO date (YYYY-MM-DD). */
+export function dayMultiplier(dateISO: string): number {
+  const day = new Date(`${dateISO}T00:00:00Z`).getUTCDay(); // 0 = Sunday
+  return DAY_MULTIPLIERS[(day + 6) % 7];
+}
+
+/** Final per-day price for a base rate on a given date. */
+export function priceForDate(base: number, dateISO: string): number {
+  const multiplier = getHoliday(dateISO)
+    ? HOLIDAY_MULTIPLIER
+    : dayMultiplier(dateISO);
+  return roundRate(base * multiplier);
+}
+
+export type EstimateLine = {
+  rate: number;
+  days: number;
+  subtotal: number;
+  holiday: boolean;
+};
+
+export type RentalEstimate = {
+  days: number;
+  holidayDays: number;
+  total: number;
+  lines: EstimateLine[];
+};
+
+/**
+ * Price for an inclusive rental: pickup date through return date.
+ * Returns days = 0 when the range is invalid.
+ */
+export function estimateRental(
+  base: number,
+  pickup: string,
+  ret: string,
+): RentalEstimate {
+  const start = new Date(`${pickup}T00:00:00Z`).getTime();
+  const end = new Date(`${ret}T00:00:00Z`).getTime();
+  if (!pickup || !ret || Number.isNaN(start) || Number.isNaN(end) || end < start) {
+    return { days: 0, holidayDays: 0, total: 0, lines: [] };
+  }
+
+  const groups = new Map<string, EstimateLine>();
+  const order: string[] = [];
+  let total = 0;
+  let holidayDays = 0;
+
+  const cursor = new Date(start);
+  while (cursor.getTime() <= end) {
+    const iso = cursor.toISOString().slice(0, 10);
+    const holiday = getHoliday(iso) !== null;
+    const rate = priceForDate(base, iso);
+    const key = `${holiday ? "h" : "d"}-${rate}`;
+    const line = groups.get(key) ?? { rate, days: 0, subtotal: 0, holiday };
+    line.days += 1;
+    line.subtotal += rate;
+    groups.set(key, line);
+    if (!order.includes(key)) order.push(key);
+    total += rate;
+    if (holiday) holidayDays += 1;
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+  }
+
+  return {
+    days: order.reduce((n, key) => n + (groups.get(key)?.days ?? 0), 0),
+    holidayDays,
+    total,
+    lines: order.map((key) => groups.get(key) as EstimateLine),
+  };
+}
