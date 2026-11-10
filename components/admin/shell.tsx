@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   CalendarDays,
   CarFront,
+  ClipboardList,
   ExternalLink,
   LayoutDashboard,
   LogOut,
@@ -16,7 +17,8 @@ import { clearAdminSession } from "@/lib/admin-auth";
 const NAV = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/cars", label: "Fleet", icon: CarFront },
-  { href: "/admin/bookings", label: "Bookings", icon: CalendarDays },
+  { href: "/admin/bookings", label: "Bookings", icon: ClipboardList },
+  { href: "/admin/calendar", label: "Calendar", icon: CalendarDays },
   { href: "/admin/packages", label: "Packages", icon: Package },
 ];
 
@@ -24,6 +26,7 @@ const PAGE_TITLES: Record<string, string> = {
   "/admin/dashboard": "Dashboard",
   "/admin/cars": "Fleet Management",
   "/admin/bookings": "Booking Management",
+  "/admin/calendar": "Calendar",
   "/admin/packages": "Package Management",
 };
 
