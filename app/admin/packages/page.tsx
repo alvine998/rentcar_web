@@ -19,8 +19,9 @@ export default function PackagesAdminPage() {
       <p className="label text-accent">Content</p>
       <h2 className="mt-2 text-2xl font-semibold tracking-tight">Packages</h2>
       <p className="mt-2 max-w-2xl text-sm text-muted">
-        Adjust starting prices and inclusions for Regular, Premium, and VIP.
-        Changes apply to the public package pages and booking form.
+        Create, edit, or remove rental packages and adjust their starting
+        prices and inclusions. Changes apply to the public package pages and
+        booking form.
       </p>
       <div className="mt-8 space-y-8">
         <PricingRules sampleBase={400000} />

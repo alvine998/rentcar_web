@@ -10,8 +10,9 @@ export default function CarsAdminPage() {
       <p className="label text-accent">Content</p>
       <h2 className="mt-2 text-2xl font-semibold tracking-tight">Fleet</h2>
       <p className="mt-2 max-w-2xl text-sm text-muted">
-        Manage the vehicles shown on the public site. Price changes are
-        reflected in the car list and booking estimates.
+        Manage the vehicles shown on the public site. Add, edit, or remove
+        units and upload photos — price changes are reflected in the car list
+        and booking estimates.
       </p>
       <div className="mt-8">
         <CarsManager initialCars={CARS} />

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Pencil, Plus, Trash2, X } from "lucide-react";
+import { Pencil, Plus, Trash2, Upload, X } from "lucide-react";
 import { formatRupiah, type Car, type PackageTier } from "@/lib/data";
 
 const CATEGORIES = ["City", "MPV", "SUV", "Luxury"] as const;
@@ -21,10 +21,29 @@ const PHOTOS = [
 ];
 const TIERS: PackageTier[] = ["regular", "premium", "vip"];
 
+type PhotoState = { url: string; name: string } | null;
+type ModalState = { mode: "add" } | { mode: "edit"; car: Car };
+
 export function CarsManager({ initialCars }: { initialCars: Car[] }) {
   const [cars, setCars] = useState<Car[]>(initialCars);
-  const [adding, setAdding] = useState(false);
+  const [modal, setModal] = useState<ModalState | null>(null);
+  const [photo, setPhoto] = useState<PhotoState>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [editingPrice, setEditingPrice] = useState<string | null>(null);
+
+  function openModal(next: ModalState) {
+    setModal(next);
+    setPhoto(null);
+    setUploadError(null);
+    setUploading(false);
+  }
+
+  function closeModal() {
+    setModal(null);
+    setPhoto(null);
+    setUploadError(null);
+  }
 
   function remove(slug: string) {
     setCars((prev) => prev.filter((c) => c.slug !== slug));
@@ -36,16 +55,49 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
     );
   }
 
-  function onAdd(e: React.FormEvent<HTMLFormElement>) {
+  async function onPickPhoto(e: React.ChangeEvent<HTMLInputElement>) {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
+    if (!file) return;
+    setUploadError(null);
+
+    if (!file.type.startsWith("image/")) {
+      setUploadError("Please choose an image file.");
+      input.value = "";
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setUploadError("Image must be 5 MB or smaller.");
+      input.value = "";
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok || !data.url) {
+        throw new Error(data.error ?? "Upload failed.");
+      }
+      setPhoto({ url: data.url, name: file.name });
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed.");
+    } finally {
+      setUploading(false);
+      input.value = "";
+    }
+  }
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!modal || uploading) return;
     const fd = new FormData(e.currentTarget);
     const brand = String(fd.get("brand") ?? "").trim();
     const name = String(fd.get("name") ?? "").trim();
     const packages = TIERS.filter((t) => fd.get(`pkg-${t}`) === "on");
-    const car: Car = {
-      slug: `${brand}-${name}-${Date.now()}`
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-"),
+    const base: Omit<Car, "slug"> = {
       brand,
       name,
       year: Number(fd.get("year")) || 2024,
@@ -54,12 +106,33 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
       seats: Number(fd.get("seats")) || 7,
       fuel: "Petrol",
       pricePerDay: Number(fd.get("price")) || 350000,
-      image: String(fd.get("image")) || PHOTOS[0],
-      packages: packages.length ? packages : ["regular"],
+      image:
+        photo?.url ??
+        (modal.mode === "edit" ? modal.car.image : PHOTOS[0]),
+      packages: packages.length
+        ? packages
+        : modal.mode === "edit"
+          ? modal.car.packages
+          : ["regular"],
     };
-    setCars((prev) => [car, ...prev]);
-    setAdding(false);
+
+    if (modal.mode === "edit") {
+      setCars((prev) =>
+        prev.map((c) => (c.slug === modal.car.slug ? { ...c, ...base } : c)),
+      );
+    } else {
+      const car: Car = {
+        ...base,
+        slug: `${brand}-${name}-${Date.now()}`
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-"),
+      };
+      setCars((prev) => [car, ...prev]);
+    }
+    closeModal();
   }
+
+  const editingCar = modal?.mode === "edit" ? modal.car : null;
 
   return (
     <div>
@@ -69,7 +142,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
         </p>
         <button
           type="button"
-          onClick={() => setAdding(true)}
+          onClick={() => openModal({ mode: "add" })}
           className="inline-flex h-10 items-center gap-2 rounded-md bg-ink px-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
         >
           <Plus className="h-4 w-4" aria-hidden />
@@ -173,14 +246,24 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                   )}
                 </td>
                 <td className="px-4 py-3">
-                  <button
-                    type="button"
-                    onClick={() => remove(car.slug)}
-                    className="inline-flex h-8 items-center gap-1.5 rounded-md border border-line px-2.5 text-xs text-muted transition-colors hover:border-red-300 hover:text-red-600"
-                  >
-                    <Trash2 className="h-3.5 w-3.5" aria-hidden />
-                    Delete
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => openModal({ mode: "edit", car })}
+                      className="inline-flex h-8 items-center gap-1.5 rounded-md border border-line px-2.5 text-xs text-muted transition-colors hover:border-ink hover:text-ink"
+                    >
+                      <Pencil className="h-3.5 w-3.5" aria-hidden />
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => remove(car.slug)}
+                      className="inline-flex h-8 items-center gap-1.5 rounded-md border border-line px-2.5 text-xs text-muted transition-colors hover:border-red-300 hover:text-red-600"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" aria-hidden />
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </motion.tr>
             ))}
@@ -188,15 +271,15 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
         </table>
       </div>
 
-      {/* Add car modal */}
+      {/* Add / edit car modal */}
       <AnimatePresence>
-        {adding && (
+        {modal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-6 backdrop-blur-sm"
-            onClick={() => setAdding(false)}
+            onClick={closeModal}
           >
             <motion.div
               initial={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -209,15 +292,17 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h2 className="text-xl font-semibold tracking-tight">
-                    Add a car
+                    {editingCar ? "Edit car" : "Add a car"}
                   </h2>
                   <p className="mt-1 text-sm text-muted">
-                    New units appear in the fleet list immediately.
+                    {editingCar
+                      ? "Changes appear in the fleet list immediately."
+                      : "New units appear in the fleet list immediately."}
                   </p>
                 </div>
                 <button
                   type="button"
-                  onClick={() => setAdding(false)}
+                  onClick={closeModal}
                   aria-label="Close"
                   className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:text-ink"
                 >
@@ -225,26 +310,42 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                 </button>
               </div>
 
-              <form onSubmit={onAdd} className="mt-6 grid gap-4 sm:grid-cols-2">
+              <form onSubmit={onSubmit} className="mt-6 grid gap-4 sm:grid-cols-2">
                 <ModalField label="Brand">
-                  <input required name="brand" className="input" placeholder="Toyota" />
+                  <input
+                    required
+                    name="brand"
+                    defaultValue={editingCar?.brand ?? ""}
+                    className="input"
+                    placeholder="Toyota"
+                  />
                 </ModalField>
                 <ModalField label="Model">
-                  <input required name="name" className="input" placeholder="Avanza Veloz" />
+                  <input
+                    required
+                    name="name"
+                    defaultValue={editingCar?.name ?? ""}
+                    className="input"
+                    placeholder="Avanza Veloz"
+                  />
                 </ModalField>
                 <ModalField label="Year">
                   <input
                     required
                     type="number"
                     name="year"
-                    defaultValue={2024}
+                    defaultValue={editingCar?.year ?? 2024}
                     min={2015}
                     max={2030}
                     className="input"
                   />
                 </ModalField>
                 <ModalField label="Category">
-                  <select name="category" className="input" defaultValue="MPV">
+                  <select
+                    name="category"
+                    className="input"
+                    defaultValue={editingCar?.category ?? "MPV"}
+                  >
                     {CATEGORIES.map((c) => (
                       <option key={c} value={c}>
                         {c}
@@ -253,7 +354,11 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                   </select>
                 </ModalField>
                 <ModalField label="Transmission">
-                  <select name="transmission" className="input" defaultValue="Automatic">
+                  <select
+                    name="transmission"
+                    className="input"
+                    defaultValue={editingCar?.transmission ?? "Automatic"}
+                  >
                     <option value="Automatic">Automatic</option>
                     <option value="Manual">Manual</option>
                   </select>
@@ -263,7 +368,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                     required
                     type="number"
                     name="seats"
-                    defaultValue={7}
+                    defaultValue={editingCar?.seats ?? 7}
                     min={2}
                     max={12}
                     className="input"
@@ -274,21 +379,53 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                     required
                     type="number"
                     name="price"
-                    defaultValue={350000}
+                    defaultValue={editingCar?.pricePerDay ?? 350000}
                     min={50000}
                     step={25000}
                     className="input"
                   />
                 </ModalField>
-                <ModalField label="Photo">
-                  <select name="image" className="input" defaultValue={PHOTOS[0]}>
-                    {PHOTOS.map((p) => (
-                      <option key={p} value={p}>
-                        {p.replace("/cars/", "")}
-                      </option>
-                    ))}
-                  </select>
-                </ModalField>
+
+                {/* Photo upload */}
+                <div className="sm:col-span-2">
+                  <span className="label mb-2 block text-muted">Photo</span>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <span className="relative h-20 w-28 shrink-0 overflow-hidden rounded-md border border-line bg-paper">
+                      <Image
+                        src={photo?.url ?? editingCar?.image ?? PHOTOS[0]}
+                        alt="Car photo preview"
+                        fill
+                        sizes="7rem"
+                        className="object-cover"
+                      />
+                    </span>
+                    <div>
+                      <label className="inline-flex h-9 cursor-pointer items-center gap-2 rounded-md border border-line bg-surface px-3.5 text-sm text-muted transition-colors hover:border-ink hover:text-ink">
+                        <Upload className="h-4 w-4" aria-hidden />
+                        {uploading ? "Uploading…" : "Upload image"}
+                        <input
+                          type="file"
+                          name="imageFile"
+                          accept="image/jpeg,image/png,image/webp,image/avif,image/gif"
+                          className="hidden"
+                          disabled={uploading}
+                          onChange={onPickPhoto}
+                        />
+                      </label>
+                      <p className="mt-1.5 text-xs text-muted">
+                        {photo
+                          ? photo.name
+                          : editingCar
+                            ? "Choose an image to replace the current photo."
+                            : "JPEG, PNG, WebP, AVIF or GIF · max 5 MB"}
+                      </p>
+                      {uploadError && (
+                        <p className="mt-1 text-xs text-red-600">{uploadError}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
                 <ModalField label="Packages" className="sm:col-span-2">
                   <div className="flex flex-wrap gap-4 pt-1">
                     {TIERS.map((t) => (
@@ -296,7 +433,11 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                         <input
                           type="checkbox"
                           name={`pkg-${t}`}
-                          defaultChecked={t === "regular"}
+                          defaultChecked={
+                            editingCar
+                              ? editingCar.packages.includes(t)
+                              : t === "regular"
+                          }
                           className="h-4 w-4 accent-[#2f5d50]"
                         />
                         <span className="capitalize">{t}</span>
@@ -308,13 +449,14 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                 <div className="flex gap-3 pt-2 sm:col-span-2">
                   <button
                     type="submit"
-                    className="inline-flex h-11 items-center rounded-md bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                    disabled={uploading}
+                    className="inline-flex h-11 items-center rounded-md bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Add to fleet
+                    {editingCar ? "Save changes" : "Add to fleet"}
                   </button>
                   <button
                     type="button"
-                    onClick={() => setAdding(false)}
+                    onClick={closeModal}
                     className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
                   >
                     Cancel
