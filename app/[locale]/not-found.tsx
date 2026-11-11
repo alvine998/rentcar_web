@@ -9,7 +9,7 @@ export default function NotFound() {
           <CarFront className="h-6 w-6" aria-hidden />
         </span>
         <p className="label mt-6 text-accent">404</p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
           Halaman tidak ditemukan · Page not found · 页面不存在
         </h1>
         <p className="mx-auto mt-4 max-w-md text-muted">

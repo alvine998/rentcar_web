@@ -79,7 +79,7 @@ export default async function PackageDetailPage(
                 <span className="mx-2">/</span>
                 <span className="text-ink">{pkg.name}</span>
               </nav>
-              <h1 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
+              <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
                 {pkg.name}
                 <span className="block text-muted">{t.packageWord}</span>
               </h1>
@@ -88,7 +88,7 @@ export default async function PackageDetailPage(
                 {content.description}
               </p>
               <p className="mt-8 flex items-baseline gap-2">
-                <span className="font-mono text-4xl font-semibold">
+                <span className="text-4xl font-bold">
                   {formatRupiah(pkg.priceFrom)}
                 </span>
                 <span className="text-muted">
@@ -144,7 +144,7 @@ export default async function PackageDetailPage(
         <div className="container-site grid gap-12 py-16 lg:grid-cols-2 lg:py-20">
           <Reveal>
             <p className="label text-accent">{t.includedLabel}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight">
               {interpolate(t.everythingIn, { name: pkg.name })}
             </h2>
             <ul className="mt-8 space-y-4">
@@ -164,7 +164,7 @@ export default async function PackageDetailPage(
 
           <Reveal delay={0.1}>
             <p className="label text-accent">{t.extrasLabel}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight">
               {t.addToTrip}
             </h2>
             <ul className="mt-8 space-y-4">
@@ -202,7 +202,7 @@ export default async function PackageDetailPage(
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="label text-accent">{t.availableLabel}</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight">
                 {interpolate(t.carsInTitle, { name: pkg.name })}
               </h2>
             </div>
@@ -234,7 +234,7 @@ export default async function PackageDetailPage(
                       {car.name}{" "}
                       <span className="font-normal text-muted">{car.year}</span>
                     </h3>
-                    <p className="mt-3 font-mono text-lg font-semibold">
+                    <p className="mt-3 text-lg font-bold">
                       {formatRupiah(car.pricePerDay)}
                       <span className="text-xs font-normal text-muted">
                         {" "}
@@ -255,7 +255,7 @@ export default async function PackageDetailPage(
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
             <Reveal>
               <p className="label text-accent">{t.faq.label}</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight">
                 {t.faq.title}
               </h2>
               <p className="mt-5 text-muted">
@@ -279,7 +279,7 @@ export default async function PackageDetailPage(
       {/* CTA */}
       <section className="band-dark text-paper">
         <div className="container-site flex flex-col items-start justify-between gap-8 py-14 lg:flex-row lg:items-center">
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-tight">
+          <h2 className="max-w-2xl text-3xl font-bold tracking-tight">
             {interpolate(t.cta.title, { name: pkg.name })}
           </h2>
           <Link

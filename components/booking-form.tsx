@@ -232,7 +232,7 @@ export function BookingForm({
                           </p>
                         </div>
                       </div>
-                      <p className="font-mono text-2xl font-semibold">
+                      <p className="text-2xl font-bold">
                         {formatRupiah(total)}
                       </p>
                     </div>

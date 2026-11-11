@@ -1,24 +1,14 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { PageTransition } from "@/components/motion";
 import { getDictionary, hasLocale, locales } from "@/lib/i18n";
 import { PACKAGES } from "@/lib/data";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -69,10 +59,7 @@ export default async function RootLayout(props: LayoutProps<"/[locale]">) {
   }));
 
   return (
-    <html
-      lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang={locale} className="h-full antialiased">
       <body className="flex min-h-full flex-col bg-paper text-ink">
         <Suspense fallback={<div className="h-16 border-b border-line" />}>
           <SiteHeader
@@ -94,6 +81,7 @@ export default async function RootLayout(props: LayoutProps<"/[locale]">) {
           perDay={dict.common.perDay}
           packageItems={packageItems}
         />
+        <WhatsAppFloat />
       </body>
     </html>
   );

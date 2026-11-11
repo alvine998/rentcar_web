@@ -2,9 +2,9 @@ import type { Dictionary } from "./en";
 
 export const zh: Dictionary = {
   meta: {
-    title: "Nusa Rentcar — 雅加达租车服务",
+    title: "Nusa Rentcar — 雅加达租车，价格透明",
     description:
-      "在雅加达租用干净、新款的车辆，卢比标价透明。可选择 Regular、Premium 或 VIP 套餐——自驾或配备专业司机。",
+      "在雅加达租用干净新款的车辆，每日 Rp 275.000 起，自驾或配专业司机。10 公里内免费送车，15 分钟内确认预订。",
   },
   nav: {
     home: "首页",
@@ -38,13 +38,13 @@ export const zh: Dictionary = {
   },
   home: {
     hero: {
-      label: "租车服务 · 雅加达",
-      titleLine1: "需要用车时，车就在身边。",
-      titleLine2: "价格清清楚楚。",
+      label: "雅加达租车 · 自 2018 年",
+      titleLine1: "订哪辆，开哪辆。",
+      titleLine2: "报多少，付多少。",
       description:
-        "新款车型、诚实的卢比标价，以及覆盖各种出行的三种套餐——从日常用车到配司机的商务活动。押金无意外，条款无陷阱。",
-      primaryCta: "浏览车型",
-      secondaryCta: "查看套餐",
+        "在 120 辆干净的新款车中任选：自驾每日 Rp 275.000 起，或由专业司机代驾。预订 15 分钟内确认，10 公里内免费送车，报价多少就付多少。",
+      primaryCta: "浏览车队",
+      secondaryCta: "比较套餐",
       note: "每日 Rp 275.000 起 · 10 公里内免费送车",
       imageCaption: "2023 款 三菱 Xpander Ultimate",
     },
@@ -56,33 +56,33 @@ export const zh: Dictionary = {
     ],
     fleet: {
       label: "车队",
-      title: "客户预订最多的车型",
+      title: "雅加达最常预订的车型",
       viewAll: "查看全部 10 款车",
     },
     packages: {
       label: "套餐",
-      title: "三种租车方式，同一种诚实价格。",
+      title: "三种租车方式，同一种实在价格。",
       description:
-        "每个套餐均包含保险和 24/7 道路救援。选择最适合您行程的服务等级。",
+        "每个套餐均包含保险与 24/7 道路救援。按您的行程选择合适的服务等级，交车时不额外加价。",
       seeDetails: "查看 {name} 详情",
     },
     steps: {
-      label: "服务流程",
-      title: "四步完成预订",
+      label: "租车流程",
+      title: "四步上路",
       items: [
         {
           title: "选择车型与套餐",
-          description: "浏览车队，比较卢比价格，选择 Regular、Premium 或 VIP。",
+          description: "浏览车队，比较每日卢比价格，然后选择 Regular、Premium 或 VIP。",
         },
         {
           title: "发送预订",
           description:
-            "告诉我们日期、上车地点及其他需求。我们会在 15 分钟内确认车辆情况。",
+            "告诉我们日期、上车地点及额外需求，15 分钟内确认车辆情况。",
         },
         {
           title: "验证并付款",
           description:
-            "提供驾照和身份证件。可选择转账、刷卡或交车时现金支付。",
+            "出示驾照与证件，支持转账、刷卡或交车时现金支付。",
         },
         {
           title: "出发上路",
@@ -92,7 +92,7 @@ export const zh: Dictionary = {
     },
     reviews: {
       label: "客户评价",
-      title: "客户怎么说",
+      title: "听听客户怎么说",
       rating: "1,240 次租车，平均评分 4.8",
       items: [
         {
@@ -118,7 +118,7 @@ export const zh: Dictionary = {
     cta: {
       title: "这周需要用车吗？",
       description:
-      "发送预订请求，我们会在 15 分钟内确认车辆情况。或直接致电——总会有人接听。",
+      "发送预订请求，15 分钟内确认——或直接在 WhatsApp 上咨询客服。",
       bookNow: "立即预订",
     },
   },

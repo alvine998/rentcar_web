@@ -48,7 +48,7 @@ export default async function ContactPage(
         <div className="container-site py-16 lg:py-20">
           <HeroFade>
             <p className="label text-accent">{t.label}</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
               {t.title}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
@@ -63,7 +63,7 @@ export default async function ContactPage(
         <div className="container-site grid gap-12 py-16 lg:grid-cols-[1.25fr_1fr] lg:py-20">
           <div>
             <Reveal>
-              <h2 className="text-2xl font-semibold tracking-tight">
+              <h2 className="text-2xl font-bold tracking-tight">
                 {t.form.title}
               </h2>
               <p className="mt-2 text-muted">{t.form.description}</p>
@@ -74,7 +74,7 @@ export default async function ContactPage(
           </div>
 
           <Reveal delay={0.1}>
-            <h2 className="text-2xl font-semibold tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight">
               {t.otherWays}
             </h2>
             <ul className="mt-8 divide-y divide-line border-y border-line">

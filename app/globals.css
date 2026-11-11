@@ -1,94 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f2ec;
-  --foreground: #141210;
+  --background: #ffffff;
+  --foreground: #334155;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-paper: #f5f2ec;
-  --color-surface: #fffdf9;
-  --color-ink: #141210;
-  --color-muted: #6f675c;
-  --color-line: #e2dbd0;
-  --color-accent: #2f5d50;
-  --color-accent-strong: #234a3f;
+  --color-paper: #ffffff;
+  --color-surface: #f9fafb;
+  --color-ink: #111827;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-accent: #046bd2;
+  --color-accent-strong: #045cb4;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Film-grain texture over the whole page */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Blueprint-style grid + accent glow for hero sections */
+/* Full-bleed hero base: photo slideshow + dark overlay live inside */
 .hero-bg {
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
 
-.hero-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(to right, rgba(20, 18, 16, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20, 18, 16, 0.05) 1px, transparent 1px);
-  background-size: 3.5rem 3.5rem;
-  -webkit-mask-image: radial-gradient(115% 120% at 75% -10%, #000 20%, transparent 72%);
-  mask-image: radial-gradient(115% 120% at 75% -10%, #000 20%, transparent 72%);
-}
-
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 56rem;
-  height: 56rem;
-  right: -16rem;
-  top: -26rem;
-  border-radius: 9999px;
-  background: radial-gradient(
-    closest-side,
-    rgba(47, 93, 80, 0.16),
-    rgba(47, 93, 80, 0.05) 55%,
-    transparent 72%
-  );
-  pointer-events: none;
-}
-
-/* Dark bands with a soft sheen instead of flat ink */
+/* Dark band (CTA strip, footer) */
 .band-dark {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-ink);
-  background-image:
-    radial-gradient(90% 130% at 12% -10%, rgba(47, 93, 80, 0.35), transparent 55%),
-    radial-gradient(70% 110% at 100% 110%, rgba(245, 242, 236, 0.09), transparent 60%);
+  background-color: #1e293b;
 }
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-paper);
+  color: #ffffff;
 }
 
 .container-site {
@@ -99,9 +54,10 @@ body::before {
 }
 
 .label {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -109,7 +65,8 @@ body::before {
   width: 100%;
   height: 2.75rem;
   border: 1px solid var(--color-line);
-  background: var(--color-surface);
+  border-radius: 0.375rem;
+  background: var(--color-paper);
   padding-inline: 0.875rem;
   font-size: 0.875rem;
   color: var(--color-foreground);
@@ -122,11 +79,19 @@ body::before {
 }
 
 .input:focus {
-  border-color: var(--color-ink);
+  border-color: var(--color-accent);
 }
 
 textarea.input {
   height: auto;
   padding-block: 0.75rem;
   line-height: 1.6;
+}
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
 }

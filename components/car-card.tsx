@@ -30,7 +30,7 @@ export function CarCard({
     <motion.article
       whileHover={{ y: -5 }}
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-sm"
+      className="flex flex-col overflow-hidden rounded-lg border border-line bg-paper shadow-[0_2px_12px_rgba(15,23,42,0.06)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(15,23,42,0.12)]"
     >
       <div className="relative aspect-[3/2] overflow-hidden">
         <Image
@@ -69,17 +69,17 @@ export function CarCard({
           </li>
         </ul>
 
-        <div className="mt-5 flex items-end justify-between gap-3 border-t border-line pt-4">
+        <div className="mt-5 border-t border-line pt-4">
           <p>
-            <span className="text-xs text-muted">{common.from} </span>
-            <span className="font-mono text-xl font-semibold">
+            <span className="text-xs text-muted">{common.from}</span>
+            <span className="ml-1 text-2xl font-bold text-ink">
               {formatRupiah(car.pricePerDay)}
             </span>
             <span className="text-sm text-muted"> {common.perDay}</span>
           </p>
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex h-9 items-center rounded-md border border-ink px-3.5 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
+            className="mt-4 flex h-10 w-full items-center justify-center rounded-md bg-ink text-sm font-semibold text-paper transition-colors hover:bg-accent"
           >
             {common.book}
           </Link>

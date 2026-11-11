@@ -56,7 +56,7 @@ export default async function CarsPage(props: PageProps<"/[locale]/cars">) {
         <div className="container-site py-16 lg:py-20">
           <Reveal>
             <p className="label text-accent">{dict.cars.label}</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
               {dict.cars.title}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">

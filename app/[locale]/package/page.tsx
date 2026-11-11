@@ -59,7 +59,7 @@ export default async function PackagePage(
         <div className="container-site py-16 lg:py-20">
           <Reveal>
             <p className="label text-accent">{t.label}</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
               {t.title}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
@@ -84,7 +84,7 @@ export default async function PackagePage(
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <h2 className="text-2xl font-semibold tracking-tight">
+                    <h2 className="text-2xl font-bold tracking-tight">
                       {p.name}
                     </h2>
                     {p.slug === "premium" && (
@@ -94,7 +94,7 @@ export default async function PackagePage(
                     )}
                   </div>
                   <p className="label mt-2 text-muted">{content.tagline}</p>
-                  <p className="mt-6 font-mono text-3xl font-semibold">
+                  <p className="mt-6 text-3xl font-bold">
                     {formatRupiah(p.priceFrom)}
                     <span className="text-sm font-normal text-muted">
                       {" "}
@@ -134,7 +134,7 @@ export default async function PackagePage(
         <div className="container-site py-16 lg:py-20">
           <Reveal className="max-w-2xl">
             <p className="label text-accent">{t.compareLabel}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
               {t.compareTitle}
             </h2>
           </Reveal>

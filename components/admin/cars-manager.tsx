@@ -438,7 +438,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                               ? editingCar.packages.includes(t)
                               : t === "regular"
                           }
-                          className="h-4 w-4 accent-[#2f5d50]"
+                          className="h-4 w-4 accent-accent"
                         />
                         <span className="capitalize">{t}</span>
                       </label>

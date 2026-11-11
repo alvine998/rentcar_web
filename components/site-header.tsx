@@ -74,7 +74,7 @@ export function SiteHeader({
     pathname.startsWith(`/${locale}/package/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line bg-paper">
       <div className="container-site flex h-16 items-center justify-between gap-6">
         <Link href={`/${locale}`} className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center bg-ink text-paper">
@@ -124,7 +124,7 @@ export function SiteHeader({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute right-0 top-full w-[23rem] border border-line bg-surface shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]"
+                  className="absolute right-0 top-full w-[23rem] border border-line bg-surface shadow-[0_24px_50px_-28px_rgba(15,23,42,0.35)]"
                 >
                   <div className="border-b border-line px-4 py-3">
                     <p className="label text-muted">{nav.packagesLabel}</p>

@@ -41,7 +41,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
           <div>
             <HeroFade>
               <p className="label text-accent">{t.label}</p>
-              <h1 className="mt-4 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
+              <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl">
                 {t.title}
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
@@ -83,7 +83,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
             <Reveal key={s.label} delay={i * 0.06}>
               <div className="py-10 lg:px-8 lg:first:pl-0">
                 <dt className="label text-muted">{s.label}</dt>
-                <dd className="mt-2 font-mono text-3xl font-semibold">
+                <dd className="mt-2 text-3xl font-bold">
                   {s.value}
                 </dd>
               </div>
@@ -97,7 +97,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
         <div className="container-site grid gap-12 py-16 lg:grid-cols-2 lg:py-20">
           <Reveal>
             <p className="label text-accent">{t.story.label}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight">
               {t.story.title}
             </h2>
           </Reveal>
@@ -116,7 +116,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
         <div className="container-site py-16 lg:py-20">
           <Reveal className="max-w-2xl">
             <p className="label text-accent">{t.values.label}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
               {t.values.title}
             </h2>
           </Reveal>
@@ -144,7 +144,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
       {/* CTA */}
       <section className="band-dark text-paper">
         <div className="container-site flex flex-col items-start justify-between gap-8 py-14 lg:flex-row lg:items-center">
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-tight">
+          <h2 className="max-w-2xl text-3xl font-bold tracking-tight">
             {t.cta.title}
           </h2>
           <div className="flex flex-wrap gap-3">

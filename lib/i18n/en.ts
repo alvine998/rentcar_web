@@ -1,13 +1,13 @@
 export const en = {
   meta: {
-    title: "Nusa Rentcar — Car Rental in Jakarta",
+    title: "Nusa Rentcar — Jakarta Car Rental, Honest Rates",
     description:
-      "Rent clean, late-model cars in Jakarta with transparent Rupiah pricing. Choose Regular, Premium, or VIP packages — self-drive or with a professional chauffeur.",
+      "Rent clean, late-model cars in Jakarta from Rp 275.000/day, self-drive or with a professional chauffeur. Free delivery within 10 km and booking confirmed within 15 minutes.",
   },
   nav: {
     home: "Home",
     package: "Package",
-    listCar: "List Car",
+    listCar: "Cars",
     about: "About Us",
     contact: "Contact Us",
     bookNow: "Book Now",
@@ -36,13 +36,13 @@ export const en = {
   },
   home: {
     hero: {
-      label: "Car rental · Jakarta",
-      titleLine1: "A car when you need one.",
-      titleLine2: "A rate you can read.",
+      label: "Car rental in Jakarta since 2018",
+      titleLine1: "The car you booked.",
+      titleLine2: "The price you were quoted.",
       description:
-        "Late-model cars, honest Rupiah pricing, and three packages that cover every trip — from a quick errand to a chauffeured event. No deposit surprises, no fine print.",
-      primaryCta: "Browse cars",
-      secondaryCta: "See packages",
+        "Choose from 120 clean, late-model cars: self-drive from Rp 275.000/day, or ride with a professional chauffeur. We confirm your booking within 15 minutes, deliver free within 10 km, and the quote you get is the price you pay.",
+      primaryCta: "Browse the fleet",
+      secondaryCta: "Compare packages",
       note: "From Rp 275.000 / day · Free delivery within 10 km",
       imageCaption: "2023 Mitsubishi Xpander Ultimate",
     },
@@ -54,37 +54,37 @@ export const en = {
     ],
     fleet: {
       label: "The fleet",
-      title: "Cars our customers book the most",
+      title: "The cars Jakarta books most",
       viewAll: "View all 10 cars",
     },
     packages: {
       label: "Packages",
-      title: "Three ways to rent. One honest rate.",
+      title: "Three ways to rent. One honest price.",
       description:
-        "Every package includes insurance and 24/7 roadside assistance. Pick the level of service that fits the trip.",
+        "Every package includes insurance and 24/7 roadside assistance. Choose the level of service that fits your trip — with nothing added at handover.",
       seeDetails: "See {name} details",
     },
     steps: {
       label: "How it works",
-      title: "Booked in four steps",
+      title: "On the road in four steps",
       items: [
         {
-          title: "Pick a car and package",
+          title: "Choose car & package",
           description:
-            "Browse the fleet, compare rates in Rupiah, and choose Regular, Premium, or VIP.",
+            "Browse the fleet, compare daily rates in Rupiah, and pick Regular, Premium, or VIP.",
         },
         {
           title: "Send your booking",
           description:
-            "Tell us the dates, pickup point, and any extras. We confirm availability within 15 minutes.",
+            "Dates, pickup point, and any extras — we confirm availability within 15 minutes.",
         },
         {
-          title: "Verify and pay",
+          title: "Verify & pay",
           description:
-            "Share your driver's licence and ID. Pay by transfer, card, or cash on delivery.",
+            "Show your licence and ID, then pay by transfer, card, or cash on delivery.",
         },
         {
-          title: "Hit the road",
+          title: "Start driving",
           description:
             "We deliver the car — or your chauffeur — to your door, inspected and fuelled.",
         },
@@ -92,7 +92,7 @@ export const en = {
     },
     reviews: {
       label: "Reviews",
-      title: "What customers say",
+      title: "What our customers say",
       rating: "4.8 average from 1,240 rentals",
       items: [
         {
@@ -118,7 +118,7 @@ export const en = {
     cta: {
       title: "Need a car this week?",
       description:
-        "Send a booking request and we'll confirm availability within 15 minutes. Or call us directly — someone always picks up.",
+        "Send a booking request and get confirmation within 15 minutes — or chat with us on WhatsApp and ask anything.",
       bookNow: "Book now",
     },
   },
@@ -143,7 +143,7 @@ export const en = {
     },
   },
   cars: {
-    label: "List car",
+    label: "The fleet",
     title: "Every car in the fleet",
     description:
       "All rates are per 24-hour rental and include basic insurance, a full tank on handover, and 24/7 roadside assistance. Filter by category to find the right fit.",

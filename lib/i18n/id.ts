@@ -2,9 +2,9 @@ import type { Dictionary } from "./en";
 
 export const id: Dictionary = {
   meta: {
-    title: "Nusa Rentcar — Rental Mobil Jakarta",
+    title: "Nusa Rentcar — Rental Mobil Jakarta, Harga Jujur",
     description:
-      "Sewa mobil bersih dan terbaru di Jakarta dengan harga Rupiah yang transparan. Pilih paket Regular, Premium, atau VIP — lepas kunci atau dengan sopir profesional.",
+      "Sewa mobil bersih dan terawat di Jakarta mulai Rp 275.000/hari, lepas kunci atau dengan sopir profesional. Gratis antar hingga 10 km dan pemesanan dikonfirmasi dalam 15 menit.",
   },
   nav: {
     home: "Beranda",
@@ -38,13 +38,13 @@ export const id: Dictionary = {
   },
   home: {
     hero: {
-      label: "Rental mobil · Jakarta",
-      titleLine1: "Mobil saat Anda butuh.",
-      titleLine2: "Harga yang bisa dibaca.",
+      label: "Rental mobil Jakarta sejak 2018",
+      titleLine1: "Mobil sesuai pesanan,",
+      titleLine2: "harga sesuai penawaran.",
       description:
-        "Mobil terbaru, harga Rupiah yang jujur, dan tiga paket untuk setiap perjalanan — dari urusan harian hingga acara dengan sopir. Tanpa kejutan deposit, tanpa jebakan fine print.",
-      primaryCta: "Lihat mobil",
-      secondaryCta: "Lihat paket",
+        "Pilih dari 120 unit mobil bersih dan terawat: lepas kunci mulai Rp 275.000/hari, atau duduk santai dengan sopir profesional. Pemesanan Anda dikonfirmasi dalam 15 menit, antar gratis hingga 10 km, dan harga di penawaran adalah harga yang Anda bayar.",
+      primaryCta: "Lihat armada",
+      secondaryCta: "Bandingkan paket",
       note: "Mulai Rp 275.000 / hari · Gratis antar dalam 10 km",
       imageCaption: "2023 Mitsubishi Xpander Ultimate",
     },
@@ -56,45 +56,45 @@ export const id: Dictionary = {
     ],
     fleet: {
       label: "Armada",
-      title: "Mobil yang paling sering dipesan",
+      title: "Mobil paling favorit di Jakarta",
       viewAll: "Lihat semua 10 mobil",
     },
     packages: {
       label: "Paket",
       title: "Tiga cara sewa. Satu harga jujur.",
       description:
-        "Setiap paket sudah termasuk asuransi dan bantuan darurat 24/7. Pilih tingkat layanan yang sesuai dengan perjalanan Anda.",
+        "Setiap paket sudah termasuk asuransi dan bantuan darurat 24/7. Pilih tingkat layanan yang pas untuk perjalanan Anda — tanpa biaya tambahan di akhir.",
       seeDetails: "Lihat detail {name}",
     },
     steps: {
-      label: "Cara kerja",
-      title: "Pesan dalam empat langkah",
+      label: "Cara sewa",
+      title: "Empat langkah, langsung jalan",
       items: [
         {
-          title: "Pilih mobil dan paket",
+          title: "Pilih mobil & paket",
           description:
-            "Jelajahi armada, bandingkan tarif dalam Rupiah, dan pilih Regular, Premium, atau VIP.",
+            "Jelajahi armada, bandingkan tarif harian dalam Rupiah, lalu pilih Regular, Premium, atau VIP.",
         },
         {
           title: "Kirim pemesanan",
           description:
-            "Beritahu tanggal, titik jemput, dan tambahan lain. Kami konfirmasi ketersediaan dalam 15 menit.",
+            "Sampaikan tanggal, titik jemput, dan kebutuhan tambahan. Kami konfirmasi ketersediaan dalam 15 menit.",
         },
         {
-          title: "Verifikasi dan bayar",
+          title: "Verifikasi & bayar",
           description:
-            "Kirim SIM dan KTP Anda. Bayar dengan transfer, kartu, atau tunai saat serah terima.",
+            "Siapkan SIM dan KTP, lalu bayar via transfer, kartu, atau tunai saat serah terima.",
         },
         {
-          title: "Langsung jalan",
+          title: "Langsung berangkat",
           description:
-            "Kami antar mobilnya — atau sopirnya — ke pintu Anda, sudah diperiksa dan berisi penuh.",
+            "Kami antar mobilnya — atau sopirnya — ke lokasi Anda, sudah diperiksa dan berbahan bakar penuh.",
         },
       ],
     },
     reviews: {
       label: "Ulasan",
-      title: "Kata pelanggan",
+      title: "Kata pelanggan kami",
       rating: "Rata-rata 4,8 dari 1.240 penyewaan",
       items: [
         {
@@ -120,7 +120,7 @@ export const id: Dictionary = {
     cta: {
       title: "Butuh mobil minggu ini?",
       description:
-        "Kirim permintaan pemesanan dan kami konfirmasi ketersediaan dalam 15 menit. Atau telepon langsung — selalu ada yang mengangkat.",
+        "Kirim permintaan pemesanan dan konfirmasi dikirim dalam 15 menit — atau chat kami di WhatsApp, langsung dibalas.",
       bookNow: "Pesan sekarang",
     },
   },

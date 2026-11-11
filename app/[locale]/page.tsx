@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -11,6 +10,7 @@ import {
   Star,
 } from "lucide-react";
 import { CarCard } from "@/components/car-card";
+import { HeroSlideshow } from "@/components/hero-slideshow";
 import { JsonLd } from "@/components/json-ld";
 import { HeroFade, Reveal } from "@/components/motion";
 import {
@@ -51,20 +51,21 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
       <JsonLd data={businessJsonLd()} />
 
       {/* Hero */}
-      <section className="hero-bg border-b border-line">
-        <div className="container-site grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
-          <div>
+      <section className="hero-bg text-paper">
+        <HeroSlideshow />
+        <div className="container-site py-24 lg:py-32">
+          <div className="max-w-2xl">
             <HeroFade delay={0.05}>
-              <p className="label text-accent">{t.hero.label}</p>
+              <p className="label text-paper/70">{t.hero.label}</p>
             </HeroFade>
-            <h1 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               <HeroFade delay={0.12}>{t.hero.titleLine1}</HeroFade>
               <HeroFade delay={0.22}>
-                <span className="block text-muted">{t.hero.titleLine2}</span>
+                <span className="block text-paper/80">{t.hero.titleLine2}</span>
               </HeroFade>
             </h1>
             <HeroFade delay={0.32}>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
                 {t.hero.description}
               </p>
             </HeroFade>
@@ -72,61 +73,40 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href={`/${locale}/cars`}
-                  className="inline-flex h-12 items-center gap-2 rounded-md bg-ink px-6 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                  className="inline-flex h-12 items-center gap-2 rounded-md bg-paper px-7 text-sm font-semibold text-ink transition-colors hover:bg-accent hover:text-paper"
                 >
                   {t.hero.primaryCta}
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
                 <Link
                   href={`/${locale}/package`}
-                  className="inline-flex h-12 items-center rounded-md border border-ink px-6 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
+                  className="inline-flex h-12 items-center rounded-md border border-paper/60 px-7 text-sm font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
                 >
                   {t.hero.secondaryCta}
                 </Link>
               </div>
-              <p className="mt-6 font-mono text-xs uppercase tracking-[0.16em] text-muted">
+              <p className="mt-6 text-xs uppercase tracking-[0.16em] text-paper/60">
                 {t.hero.note}
               </p>
             </HeroFade>
           </div>
+        </div>
+      </section>
 
-          <HeroFade delay={0.2}>
-            <figure>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-line shadow-sm">
-                <Image
-                  src="/cars/xpander.jpg"
-                  alt="Mitsubishi Xpander — Nusa Rentcar"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 40rem, 92vw"
-                  className="object-cover"
-                />
+      {/* Stats */}
+      <section className="border-b border-line bg-surface">
+        <dl className="container-site grid grid-cols-2 divide-line lg:grid-cols-4 lg:divide-x">
+          {t.stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.06}>
+              <div className="px-0 py-8 lg:px-8 lg:first:pl-0">
+                <dt className="label text-muted">{s.label}</dt>
+                <dd className="mt-2 text-3xl font-bold">
+                  {s.value}
+                </dd>
               </div>
-              <figcaption className="mt-3 flex items-center justify-between font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                <span>{t.hero.imageCaption}</span>
-                <span>
-                  {formatRupiah(450000)} {dict.common.perDay}
-                </span>
-              </figcaption>
-            </figure>
-          </HeroFade>
-        </div>
-
-        {/* Stats */}
-        <div className="border-t border-line bg-surface">
-          <dl className="container-site grid grid-cols-2 divide-line lg:grid-cols-4 lg:divide-x">
-            {t.stats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.06}>
-                <div className="px-0 py-8 lg:px-8 lg:first:pl-0">
-                  <dt className="label text-muted">{s.label}</dt>
-                  <dd className="mt-2 font-mono text-3xl font-semibold">
-                    {s.value}
-                  </dd>
-                </div>
-              </Reveal>
-            ))}
-          </dl>
-        </div>
+            </Reveal>
+          ))}
+        </dl>
       </section>
 
       {/* Popular cars */}
@@ -135,7 +115,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="label text-accent">{t.fleet.label}</p>
-              <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 max-w-xl text-3xl font-bold tracking-tight sm:text-4xl">
                 {t.fleet.title}
               </h2>
             </div>
@@ -163,7 +143,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
         <div className="container-site py-20 lg:py-24">
           <Reveal className="max-w-2xl">
             <p className="label text-accent">{t.packages.label}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
               {t.packages.title}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted">
@@ -178,10 +158,10 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
                 <Reveal key={p.slug} delay={i * 0.08}>
                   <article className="flex h-full flex-col rounded-xl border border-line bg-paper p-8">
                     <p className="label text-muted">{content.tagline}</p>
-                    <h3 className="mt-3 text-2xl font-semibold tracking-tight">
+                    <h3 className="mt-3 text-2xl font-bold tracking-tight">
                       {p.name}
                     </h3>
-                    <p className="mt-4 font-mono text-3xl font-semibold">
+                    <p className="mt-4 text-3xl font-bold">
                       {formatRupiah(p.priceFrom)}
                       <span className="text-sm font-normal text-muted">
                         {" "}
@@ -221,7 +201,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
         <div className="container-site py-20 lg:py-24">
           <Reveal className="max-w-2xl">
             <p className="label text-accent">{t.steps.label}</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
               {t.steps.title}
             </h2>
           </Reveal>
@@ -258,7 +238,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
           <Reveal className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="label text-accent">{t.reviews.label}</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
                 {t.reviews.title}
               </h2>
             </div>
@@ -290,7 +270,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
       <section className="band-dark text-paper">
         <div className="container-site flex flex-col items-start justify-between gap-8 py-16 lg:flex-row lg:items-center lg:py-20">
           <Reveal>
-            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
               {t.cta.title}
             </h2>
             <p className="mt-4 max-w-xl text-paper/70">{t.cta.description}</p>
