@@ -88,7 +88,7 @@ export default async function PackagePage(
                       {p.name}
                     </h2>
                     {p.slug === "premium" && (
-                      <span className="label rounded-md bg-accent px-2.5 py-1 text-paper">
+                      <span className="label rounded-md bg-accent px-2.5 py-1 text-white">
                         {t.mostBooked}
                       </span>
                     )}
@@ -117,7 +117,7 @@ export default async function PackagePage(
                   </ul>
                   <Link
                     href={`/${locale}/package/${p.slug}`}
-                    className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-md bg-ink text-sm font-medium text-paper transition-colors hover:bg-accent"
+                    className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-md bg-accent text-sm font-medium text-white transition-colors hover:bg-accent-strong"
                   >
                     {interpolate(t.seePackage, { name: p.name })}
                     <ArrowRight className="h-4 w-4" aria-hidden />
@@ -197,14 +197,14 @@ export default async function PackagePage(
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex h-12 items-center gap-2 rounded-md bg-ink px-6 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
               >
                 {t.bookPackage}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
               <Link
                 href={`/${locale}/cars`}
-                className="inline-flex h-12 items-center rounded-md border border-ink px-6 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
+                className="inline-flex h-12 items-center rounded-md border border-line bg-surface px-6 text-sm font-medium transition-colors hover:border-accent hover:text-accent-strong"
               >
                 {t.browseFirst}
               </Link>

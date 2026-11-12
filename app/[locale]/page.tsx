@@ -51,21 +51,21 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
       <JsonLd data={businessJsonLd()} />
 
       {/* Hero */}
-      <section className="hero-bg text-paper">
+      <section className="hero-bg text-ink">
         <HeroSlideshow />
         <div className="container-site py-24 lg:py-32">
           <div className="max-w-2xl">
             <HeroFade delay={0.05}>
-              <p className="label text-paper/70">{t.hero.label}</p>
+              <p className="label text-accent-strong">{t.hero.label}</p>
             </HeroFade>
             <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               <HeroFade delay={0.12}>{t.hero.titleLine1}</HeroFade>
               <HeroFade delay={0.22}>
-                <span className="block text-paper/80">{t.hero.titleLine2}</span>
+                <span className="block text-muted">{t.hero.titleLine2}</span>
               </HeroFade>
             </h1>
             <HeroFade delay={0.32}>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
                 {t.hero.description}
               </p>
             </HeroFade>
@@ -73,19 +73,19 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   href={`/${locale}/cars`}
-                  className="inline-flex h-12 items-center gap-2 rounded-md bg-paper px-7 text-sm font-semibold text-ink transition-colors hover:bg-accent hover:text-paper"
+                  className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-7 text-sm font-semibold text-white transition-colors hover:bg-accent-strong"
                 >
                   {t.hero.primaryCta}
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
                 <Link
                   href={`/${locale}/package`}
-                  className="inline-flex h-12 items-center rounded-md border border-paper/60 px-7 text-sm font-semibold text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
+                  className="inline-flex h-12 items-center rounded-md border border-ink/20 bg-white/70 px-7 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent-strong"
                 >
                   {t.hero.secondaryCta}
                 </Link>
               </div>
-              <p className="mt-6 text-xs uppercase tracking-[0.16em] text-paper/60">
+              <p className="mt-6 text-xs uppercase tracking-[0.16em] text-muted">
                 {t.hero.note}
               </p>
             </HeroFade>
@@ -184,7 +184,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
                     </ul>
                     <Link
                       href={`/${locale}/package/${p.slug}`}
-                      className="mt-8 inline-flex h-11 items-center justify-center rounded-md border border-ink text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
+                      className="mt-8 inline-flex h-11 items-center justify-center rounded-md border border-line bg-surface text-sm font-medium text-accent-strong transition-colors hover:border-accent hover:bg-accent hover:text-white"
                     >
                       {interpolate(t.packages.seeDetails, { name: p.name })}
                     </Link>
@@ -243,7 +243,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
               </h2>
             </div>
             <p className="flex items-center gap-2 font-mono text-sm text-muted">
-              <Star className="h-4 w-4 fill-ink text-ink" aria-hidden />
+                <Star className="h-4 w-4 fill-accent text-accent" aria-hidden />
               {t.reviews.rating}
             </p>
           </Reveal>
@@ -267,26 +267,26 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
       </section>
 
       {/* CTA */}
-      <section className="band-dark text-paper">
+      <section className="band-dark text-ink">
         <div className="container-site flex flex-col items-start justify-between gap-8 py-16 lg:flex-row lg:items-center lg:py-20">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
               {t.cta.title}
             </h2>
-            <p className="mt-4 max-w-xl text-paper/70">{t.cta.description}</p>
+            <p className="mt-4 max-w-xl text-muted">{t.cta.description}</p>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="flex flex-wrap gap-3">
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex h-12 items-center gap-2 rounded-md bg-paper px-6 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
+                className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
               >
                 {t.cta.bookNow}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
               <a
                 href="tel:+622172088456"
-                className="inline-flex h-12 items-center rounded-md border border-paper/30 px-6 text-sm font-medium transition-colors hover:border-paper"
+                className="inline-flex h-12 items-center rounded-md border border-ink/20 bg-white/70 px-6 text-sm font-medium transition-colors hover:border-accent hover:text-accent-strong"
               >
                 {dict.footer.phone}
               </a>

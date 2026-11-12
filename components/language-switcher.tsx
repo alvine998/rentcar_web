@@ -42,7 +42,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
         aria-expanded={open}
         aria-haspopup="listbox"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-9 items-center gap-1.5 border border-line px-3 text-sm transition-colors hover:border-ink"
+        className="flex h-9 items-center gap-1.5 border border-line px-3 text-sm transition-colors hover:border-accent"
       >
         <Languages className="h-4 w-4 text-muted" aria-hidden />
         <span className="hidden sm:inline">{localeNames[locale]}</span>
@@ -71,7 +71,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
                   aria-selected={l === locale}
                   onClick={() => switchTo(l)}
                   className={`flex w-full items-center justify-between px-3 py-2 text-sm transition-colors hover:bg-paper ${
-                    l === locale ? "text-ink" : "text-muted"
+                    l === locale ? "text-accent-strong" : "text-muted"
                   }`}
                 >
                   {localeNames[l]}

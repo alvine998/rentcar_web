@@ -229,7 +229,7 @@ export function BookingsCalendar({
             <button
               type="button"
               onClick={goToday}
-              className="h-9 rounded-md border border-line bg-surface px-3.5 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
+              className="h-9 rounded-md border border-line bg-surface px-3.5 text-sm text-muted transition-colors hover:border-accent hover:text-accent-strong"
             >
               Today
             </button>
@@ -238,7 +238,7 @@ export function BookingsCalendar({
                 type="button"
                 onClick={() => goMonth(-1)}
                 aria-label="Previous month"
-                className="flex h-9 w-9 items-center justify-center rounded-l-md text-muted transition-colors hover:text-ink"
+                className="flex h-9 w-9 items-center justify-center rounded-l-md text-muted transition-colors hover:text-accent-strong"
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden />
               </button>
@@ -246,7 +246,7 @@ export function BookingsCalendar({
                 type="button"
                 onClick={() => goMonth(1)}
                 aria-label="Next month"
-                className="flex h-9 w-9 items-center justify-center rounded-r-md border-l border-line text-muted transition-colors hover:text-ink"
+                className="flex h-9 w-9 items-center justify-center rounded-r-md border-l border-line text-muted transition-colors hover:text-accent-strong"
               >
                 <ChevronRight className="h-4 w-4" aria-hidden />
               </button>
@@ -266,7 +266,7 @@ export function BookingsCalendar({
           <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent-strong">
             Weekend / rate day
           </span>
-          <span className="inline-flex items-center rounded-full border border-ink px-2.5 py-0.5 text-xs font-medium">
+          <span className="inline-flex items-center rounded-full border border-accent px-2.5 py-0.5 text-xs font-medium text-accent-strong">
             Today
           </span>
         </div>
@@ -314,13 +314,13 @@ export function BookingsCalendar({
                             ? "bg-accent/[0.06]"
                             : "bg-surface"
                       } ${day.inMonth ? "" : "opacity-45"} ${
-                        isSelected ? "ring-2 ring-inset ring-ink" : ""
+                        isSelected ? "ring-2 ring-inset ring-accent" : ""
                       }`}
                     >
                       <div className="flex items-start justify-between gap-1">
                         <span
                           className={`flex h-6 min-w-6 items-center justify-center rounded-full px-1 text-xs font-medium ${
-                            isToday ? "bg-ink text-paper" : "text-ink"
+                            isToday ? "bg-accent text-white" : "text-ink"
                           }`}
                         >
                           {day.day}
@@ -426,7 +426,7 @@ export function BookingsCalendar({
                     onClick={() => selectDay(h.date)}
                     className={`inline-flex items-center gap-2 rounded-md border px-2.5 py-1.5 text-xs transition-colors ${
                       selected === h.date
-                        ? "border-ink ring-1 ring-ink"
+                        ? "border-accent ring-1 ring-accent"
                         : "border-amber-200 bg-amber-50 text-amber-800 hover:border-amber-400"
                     }`}
                   >

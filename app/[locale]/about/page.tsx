@@ -49,7 +49,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
               </p>
               <Link
                 href={`/${locale}/contact`}
-                className="mt-8 inline-flex h-12 items-center gap-2 rounded-md bg-ink px-6 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                className="mt-8 inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
               >
                 {t.talkToUs}
                 <ArrowRight className="h-4 w-4" aria-hidden />
@@ -142,7 +142,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
       </section>
 
       {/* CTA */}
-      <section className="band-dark text-paper">
+      <section className="band-dark text-ink">
         <div className="container-site flex flex-col items-start justify-between gap-8 py-14 lg:flex-row lg:items-center">
           <h2 className="max-w-2xl text-3xl font-bold tracking-tight">
             {t.cta.title}
@@ -150,14 +150,14 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
           <div className="flex flex-wrap gap-3">
             <Link
               href={`/${locale}/cars`}
-              className="inline-flex h-12 items-center gap-2 rounded-md bg-paper px-6 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
+              className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
             >
               {t.cta.browseCars}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <Link
               href={`/${locale}/contact`}
-              className="inline-flex h-12 items-center rounded-md border border-paper/30 px-6 text-sm font-medium transition-colors hover:border-paper"
+              className="inline-flex h-12 items-center rounded-md border border-ink/20 bg-white/70 px-6 text-sm font-medium transition-colors hover:border-accent hover:text-accent-strong"
             >
               {t.cta.visit}
             </Link>

@@ -41,7 +41,7 @@ export function CarCard({
           className="object-cover transition-transform duration-500 ease-out hover:scale-105"
         />
         {car.popular && (
-          <span className="label absolute left-3 top-3 rounded-md bg-ink/90 px-2.5 py-1 text-paper">
+          <span className="label absolute left-3 top-3 rounded-md bg-accent px-2.5 py-1 text-white">
             {common.popular}
           </span>
         )}
@@ -79,7 +79,7 @@ export function CarCard({
           </p>
           <Link
             href={`/${locale}/contact`}
-            className="mt-4 flex h-10 w-full items-center justify-center rounded-md bg-ink text-sm font-semibold text-paper transition-colors hover:bg-accent"
+            className="mt-4 flex h-10 w-full items-center justify-center rounded-md bg-accent text-sm font-semibold text-white transition-colors hover:bg-accent-strong"
           >
             {common.book}
           </Link>

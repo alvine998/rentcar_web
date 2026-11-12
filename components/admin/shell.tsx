@@ -47,16 +47,16 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen bg-paper">
       {/* Sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-line bg-ink text-paper lg:flex">
-        <div className="flex items-center gap-2.5 border-b border-paper/10 px-6 py-5">
-          <span className="flex h-9 w-9 items-center justify-center bg-paper text-ink">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-line bg-paper text-ink lg:flex">
+        <div className="flex items-center gap-2.5 border-b border-line px-6 py-5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-white">
             <CarFront className="h-5 w-5" aria-hidden />
           </span>
           <div className="leading-tight">
             <p className="text-sm font-semibold tracking-[0.14em]">
               NUSA RENTCAR
             </p>
-            <p className="label text-paper/50">Admin console</p>
+            <p className="label text-muted">Admin console</p>
           </div>
         </div>
 
@@ -70,8 +70,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                 href={item.href}
                 className={`relative flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors ${
                   active
-                    ? "bg-paper/10 text-paper"
-                    : "text-paper/60 hover:bg-paper/5 hover:text-paper"
+                    ? "bg-accent/10 text-accent-strong"
+                    : "text-muted hover:bg-surface hover:text-accent-strong"
                 }`}
               >
                 {active && (
@@ -88,14 +88,14 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           })}
         </nav>
 
-        <div className="border-t border-paper/10 p-4">
+        <div className="border-t border-line p-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-semibold text-paper">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-semibold text-white">
               A
             </span>
             <div className="min-w-0 leading-tight">
               <p className="truncate text-sm font-medium">Admin</p>
-              <p className="truncate text-xs text-paper/50">
+              <p className="truncate text-xs text-muted">
                 admin@nusarentcar.id
               </p>
             </div>
@@ -103,7 +103,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <button
             type="button"
             onClick={logout}
-            className="mt-3 flex w-full items-center gap-2 rounded-md border border-paper/15 px-3 py-2 text-sm text-paper/70 transition-colors hover:border-paper/40 hover:text-paper"
+            className="mt-3 flex w-full items-center gap-2 rounded-md border border-line px-3 py-2 text-sm text-muted transition-colors hover:border-accent hover:text-accent-strong"
           >
             <LogOut className="h-4 w-4" aria-hidden />
             Sign out
@@ -121,7 +121,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-2">
               <Link
                 href="/id"
-                className="inline-flex h-9 items-center gap-2 rounded-md border border-line px-3.5 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
+                className="inline-flex h-9 items-center gap-2 rounded-md border border-line px-3.5 text-sm text-muted transition-colors hover:border-accent hover:text-accent-strong"
               >
                 <ExternalLink className="h-4 w-4" aria-hidden />
                 View website
@@ -129,7 +129,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={logout}
-                className="inline-flex h-9 items-center gap-2 rounded-md bg-ink px-3.5 text-sm font-medium text-paper transition-colors hover:bg-accent lg:hidden"
+                className="inline-flex h-9 items-center gap-2 rounded-md bg-accent px-3.5 text-sm font-medium text-white transition-colors hover:bg-accent-strong lg:hidden"
               >
                 <LogOut className="h-4 w-4" aria-hidden />
                 Sign out
@@ -151,8 +151,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   className={`whitespace-nowrap rounded-md px-3 py-1.5 text-sm transition-colors ${
                     active
-                      ? "bg-ink text-paper"
-                      : "text-muted hover:text-ink"
+                      ? "bg-accent text-white"
+                      : "text-muted hover:text-accent-strong"
                   }`}
                 >
                   {item.label}

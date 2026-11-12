@@ -73,11 +73,11 @@ export default async function PackageDetailPage(
           <div>
             <HeroFade>
               <nav className="label text-muted" aria-label="Breadcrumb">
-                <Link href={`/${locale}/package`} className="hover:text-ink">
+                <Link href={`/${locale}/package`} className="hover:text-accent-strong">
                   {t.breadcrumbPackage}
                 </Link>
                 <span className="mx-2">/</span>
-                <span className="text-ink">{pkg.name}</span>
+                 <span className="text-accent-strong">{pkg.name}</span>
               </nav>
               <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
                 {pkg.name}
@@ -98,20 +98,20 @@ export default async function PackageDetailPage(
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href={`/${locale}/contact`}
-                  className="inline-flex h-12 items-center gap-2 rounded-md bg-ink px-6 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                  className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
                 >
                   {interpolate(t.book, { name: pkg.name })}
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
                 <Link
                   href={`/${locale}/package`}
-                  className="inline-flex h-12 items-center rounded-md border border-ink px-6 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
+                  className="inline-flex h-12 items-center rounded-md border border-line bg-surface px-6 text-sm font-medium transition-colors hover:border-accent hover:text-accent-strong"
                 >
                   {t.compare}
                 </Link>
               </div>
               <p className="mt-6 text-sm text-muted">
-                <span className="font-medium text-ink">{t.goodFor}</span>{" "}
+                <span className="font-medium text-accent-strong">{t.goodFor}</span>{" "}
                 {content.suitableFor}
               </p>
             </HeroFade>
@@ -153,7 +153,7 @@ export default async function PackageDetailPage(
                   key={item}
                   className="flex gap-3 border-b border-line pb-4 last:border-0"
                 >
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-accent text-paper">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-accent text-white">
                     <Check className="h-3.5 w-3.5" aria-hidden />
                   </span>
                   <span className="text-base leading-relaxed">{item}</span>
@@ -262,7 +262,7 @@ export default async function PackageDetailPage(
                 {t.faq.lead}{" "}
                 <a
                   href="tel:+622172088456"
-                  className="text-ink underline underline-offset-4"
+                  className="text-accent-strong underline underline-offset-4"
                 >
                   {dict.footer.phone}
                 </a>{" "}
@@ -277,14 +277,14 @@ export default async function PackageDetailPage(
       </section>
 
       {/* CTA */}
-      <section className="band-dark text-paper">
+      <section className="band-dark text-ink">
         <div className="container-site flex flex-col items-start justify-between gap-8 py-14 lg:flex-row lg:items-center">
           <h2 className="max-w-2xl text-3xl font-bold tracking-tight">
             {interpolate(t.cta.title, { name: pkg.name })}
           </h2>
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex h-12 items-center gap-2 rounded-md bg-paper px-6 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-paper"
+            className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
           >
             {t.cta.button}
             <ArrowRight className="h-4 w-4" aria-hidden />

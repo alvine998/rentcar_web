@@ -37,8 +37,8 @@ export function CarCatalog({
             onClick={() => setFilter(f)}
             className={`h-9 rounded-md border px-4 text-sm transition-colors ${
               filter === f
-                ? "border-ink bg-ink text-paper"
-                : "border-line bg-surface text-muted hover:border-ink hover:text-ink"
+                ? "border-accent bg-accent text-white"
+                : "border-line bg-surface text-muted hover:border-accent hover:text-accent-strong"
             }`}
           >
             {labelFor(f)}

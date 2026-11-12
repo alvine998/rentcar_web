@@ -181,8 +181,8 @@ function FilterChip({
       onClick={onClick}
       className={`h-9 rounded-md border px-3.5 text-sm transition-colors ${
         active
-          ? "border-ink bg-ink text-paper"
-          : "border-line bg-surface text-muted hover:border-ink hover:text-ink"
+          ? "border-accent bg-accent text-white"
+          : "border-line bg-surface text-muted hover:border-accent hover:text-accent-strong"
       }`}
     >
       {children}

@@ -143,7 +143,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
         <button
           type="button"
           onClick={() => openModal({ mode: "add" })}
-          className="inline-flex h-10 items-center gap-2 rounded-md bg-ink px-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
+          className="inline-flex h-10 items-center gap-2 rounded-md bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
         >
           <Plus className="h-4 w-4" aria-hidden />
           Add car
@@ -232,7 +232,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                           setEditingPrice(null);
                         }
                       }}
-                      className="h-9 w-32 rounded-md border border-ink px-2 font-mono text-sm outline-none"
+                      className="h-9 w-32 rounded-md border border-accent px-2 font-mono text-sm outline-none"
                     />
                   ) : (
                     <button
@@ -250,7 +250,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                     <button
                       type="button"
                       onClick={() => openModal({ mode: "edit", car })}
-                      className="inline-flex h-8 items-center gap-1.5 rounded-md border border-line px-2.5 text-xs text-muted transition-colors hover:border-ink hover:text-ink"
+                      className="inline-flex h-8 items-center gap-1.5 rounded-md border border-line px-2.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent-strong"
                     >
                       <Pencil className="h-3.5 w-3.5" aria-hidden />
                       Edit
@@ -278,7 +278,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-6 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-accent/15 p-6 backdrop-blur-sm"
             onClick={closeModal}
           >
             <motion.div
@@ -304,7 +304,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                   type="button"
                   onClick={closeModal}
                   aria-label="Close"
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:text-ink"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:text-accent-strong"
                 >
                   <X className="h-4 w-4" aria-hidden />
                 </button>
@@ -400,7 +400,7 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                       />
                     </span>
                     <div>
-                      <label className="inline-flex h-9 cursor-pointer items-center gap-2 rounded-md border border-line bg-surface px-3.5 text-sm text-muted transition-colors hover:border-ink hover:text-ink">
+                      <label                   className="inline-flex h-9 cursor-pointer items-center gap-2 rounded-md border border-line bg-surface px-3.5 text-sm text-muted transition-colors hover:border-accent hover:text-accent-strong">
                         <Upload className="h-4 w-4" aria-hidden />
                         {uploading ? "Uploading…" : "Upload image"}
                         <input
@@ -450,14 +450,14 @@ export function CarsManager({ initialCars }: { initialCars: Car[] }) {
                   <button
                     type="submit"
                     disabled={uploading}
-                    className="inline-flex h-11 items-center rounded-md bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex h-11 items-center rounded-md bg-accent px-5 text-sm font-medium text-white transition-colors hover:bg-accent-strong disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {editingCar ? "Save changes" : "Add to fleet"}
                   </button>
                   <button
                     type="button"
                     onClick={closeModal}
-                    className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
+                    className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm text-muted transition-colors hover:border-accent hover:text-accent-strong"
                   >
                     Cancel
                   </button>

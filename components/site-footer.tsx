@@ -18,25 +18,25 @@ export function SiteFooter({
   packageItems: { slug: string; name: string; priceFrom: number }[];
 }) {
   return (
-    <footer className="band-dark text-paper">
+    <footer className="band-dark text-ink">
       <div className="container-site py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center bg-paper text-ink">
+              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-white">
                 <CarFront className="h-5 w-5" aria-hidden />
               </span>
               <span className="text-sm font-semibold tracking-[0.14em]">
                 NUSA RENTCAR
               </span>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/70">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               {footer.description}
             </p>
           </div>
 
           <div>
-            <p className="label text-paper/50">{footer.explore}</p>
+            <p className="label text-accent-strong">{footer.explore}</p>
             <ul className="mt-4 space-y-2.5">
               {[
                 { href: `/${locale}`, label: nav.home },
@@ -48,7 +48,7 @@ export function SiteFooter({
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-sm text-paper/70 transition-colors hover:text-paper"
+                    className="text-sm text-muted transition-colors hover:text-accent-strong"
                   >
                     {l.label}
                   </Link>
@@ -58,13 +58,13 @@ export function SiteFooter({
           </div>
 
           <div>
-            <p className="label text-paper/50">{footer.packages}</p>
+            <p className="label text-accent-strong">{footer.packages}</p>
             <ul className="mt-4 space-y-2.5">
               {packageItems.map((p) => (
                 <li key={p.slug}>
                   <Link
                     href={`/${locale}/package/${p.slug}`}
-                    className="text-sm text-paper/70 transition-colors hover:text-paper"
+                    className="text-sm text-muted transition-colors hover:text-accent-strong"
                   >
                     {p.name} — {nav.from} {formatRupiah(p.priceFrom)}{perDay}
                   </Link>
@@ -74,10 +74,10 @@ export function SiteFooter({
           </div>
 
           <div>
-            <p className="label text-paper/50">{footer.contact}</p>
-            <ul className="mt-4 space-y-3 text-sm text-paper/70">
+            <p className="label text-accent-strong">{footer.contact}</p>
+            <ul className="mt-4 space-y-3 text-sm text-muted">
               <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-paper/50" aria-hidden />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
                 <span>
                   {footer.addressLine1}
                   <br />
@@ -85,26 +85,26 @@ export function SiteFooter({
                 </span>
               </li>
               <li className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-paper/50" aria-hidden />
-                <a href="tel:+622172088456" className="hover:text-paper">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                <a href="tel:+622172088456" className="hover:text-accent-strong">
                   {footer.phone}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-paper/50" aria-hidden />
-                <a href="mailto:halo@nusarentcar.id" className="hover:text-paper">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                <a href="mailto:halo@nusarentcar.id" className="hover:text-accent-strong">
                   {footer.email}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-paper/50" aria-hidden />
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
                 <span>{footer.hours}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-paper/15 pt-6 text-xs text-paper/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; 2026 Nusa Rentcar. {footer.rights}</p>
           <p>{footer.photoCredit}</p>
         </div>

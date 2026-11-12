@@ -77,7 +77,7 @@ export function SiteHeader({
     <header className="sticky top-0 z-50 border-b border-line bg-paper">
       <div className="container-site flex h-16 items-center justify-between gap-6">
         <Link href={`/${locale}`} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center bg-ink text-paper">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-white">
             <CarFront className="h-5 w-5" aria-hidden />
           </span>
           <span className="leading-tight">
@@ -106,7 +106,7 @@ export function SiteHeader({
               aria-haspopup="true"
               onClick={() => setOpenPackages((v) => !v)}
               className={`relative flex h-9 items-center gap-1.5 px-3 text-sm transition-colors ${
-                packageActive ? "text-ink" : "text-muted hover:text-ink"
+                packageActive ? "text-accent-strong" : "text-muted hover:text-accent-strong"
               }`}
             >
               {nav.package}
@@ -174,7 +174,7 @@ export function SiteHeader({
           <LanguageSwitcher locale={locale} />
           <Link
             href={`/${locale}/contact`}
-            className="hidden h-9 items-center rounded-md bg-ink px-4 text-sm font-medium text-paper transition-colors hover:bg-accent sm:inline-flex"
+            className="hidden h-9 items-center rounded-md bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-strong sm:inline-flex"
           >
             {nav.bookNow}
           </Link>
@@ -251,7 +251,7 @@ export function SiteHeader({
               </ul>
               <Link
                 href={`/${locale}/contact`}
-                className="mt-4 flex h-11 items-center justify-center rounded-md bg-ink text-sm font-medium text-paper"
+                className="mt-4 flex h-11 items-center justify-center rounded-md bg-accent text-sm font-medium text-white"
               >
                 {nav.bookNow}
               </Link>
@@ -268,7 +268,7 @@ function ActiveBar({ id }: { id: string }) {
     <motion.span
       layoutId={id}
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-x-3 -bottom-[13px] h-px bg-ink"
+      className="absolute inset-x-3 -bottom-[13px] h-px bg-accent"
     />
   );
 }
@@ -286,7 +286,7 @@ function NavLink({
     <Link
       href={href}
       className={`relative flex h-9 items-center px-3 text-sm transition-colors ${
-        active ? "text-ink" : "text-muted hover:text-ink"
+        active ? "text-accent-strong" : "text-muted hover:text-accent-strong"
       }`}
     >
       {label}
@@ -310,7 +310,7 @@ function MobileItem({
     <Link
       href={href}
       className={`block py-2 text-sm ${indent ? "pl-3" : ""} ${
-        active ? "font-medium text-ink" : "text-muted"
+        active ? "font-medium text-accent-strong" : "text-muted"
       }`}
     >
       {label}

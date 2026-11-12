@@ -26,12 +26,12 @@ export function HeroSlideshow() {
   }, [reduce]);
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden bg-ink">
+    <div className="absolute inset-0 -z-10 overflow-hidden bg-[#e3f2fd]">
       <AnimatePresence initial={false}>
         <motion.div
           key={index}
           initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0.9, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ opacity: { duration: 0.8 }, scale: { duration: 7, ease: "linear" } }}
           className="absolute inset-0"
@@ -47,8 +47,8 @@ export function HeroSlideshow() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/65 to-ink/35" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-white/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#e3f2fd]/90 via-white/20 to-white/40" />
 
       {!reduce && (
         <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
@@ -59,7 +59,7 @@ export function HeroSlideshow() {
               aria-label={`Slide ${i + 1}`}
               onClick={() => setIndex(i)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index ? "w-8 bg-paper" : "w-1.5 bg-paper/40 hover:bg-paper/70"
+                i === index ? "w-8 bg-accent" : "w-1.5 bg-ink/25 hover:bg-ink/45"
               }`}
             />
           ))}

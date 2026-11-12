@@ -32,7 +32,7 @@ export function WhatsAppFloat() {
             transition={{ duration: 0.2 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Scroll to top"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-paper text-ink shadow-lg transition-colors hover:border-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-paper text-ink shadow-lg transition-colors hover:border-accent hover:text-accent-strong"
           >
             <ArrowUp className="h-5 w-5" aria-hidden />
           </motion.button>

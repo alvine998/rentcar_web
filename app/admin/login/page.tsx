@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
         className="w-full max-w-md"
       >
         <div className="mb-8 text-center">
-          <span className="mx-auto flex h-12 w-12 items-center justify-center bg-ink text-paper">
+          <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-md bg-accent text-white">
             <CarFront className="h-6 w-6" aria-hidden />
           </span>
           <h1 className="mt-5 text-2xl font-semibold tracking-tight">
@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
-                className="absolute right-0 top-0 flex h-[2.75rem] w-11 items-center justify-center text-muted transition-colors hover:text-ink"
+                className="absolute right-0 top-0 flex h-[2.75rem] w-11 items-center justify-center text-muted transition-colors hover:text-accent-strong"
               >
                 {showPassword ? (
                   <EyeOff className="h-4 w-4" aria-hidden />
@@ -113,7 +113,7 @@ export default function AdminLoginPage() {
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.15 }}
-            className="mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-ink text-sm font-medium text-paper transition-colors hover:bg-accent disabled:opacity-60"
+            className="mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-accent text-sm font-medium text-white transition-colors hover:bg-accent-strong disabled:opacity-60"
           >
             <Lock className="h-4 w-4" aria-hidden />
             {loading ? "Signing in…" : "Sign in"}

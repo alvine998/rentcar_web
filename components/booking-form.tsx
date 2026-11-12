@@ -61,7 +61,7 @@ export function BookingForm({
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-start gap-3 rounded-xl border border-line bg-surface p-8"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-accent text-paper">
+            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-accent text-white">
               <Check className="h-5 w-5" aria-hidden />
             </span>
             <h3 className="text-xl font-semibold tracking-tight">
@@ -213,7 +213,7 @@ export function BookingForm({
                   >
                     <div className="flex flex-wrap items-center justify-between gap-4">
                       <div className="flex items-start gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-paper">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-white">
                           <Calculator className="h-4 w-4" aria-hidden />
                         </span>
                         <div>
@@ -327,7 +327,7 @@ export function BookingForm({
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.15 }}
-                className="inline-flex h-11 items-center rounded-md bg-ink px-6 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                className="inline-flex h-11 items-center rounded-md bg-accent px-6 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
               >
                 {form.submit}
               </motion.button>

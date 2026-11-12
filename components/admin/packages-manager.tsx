@@ -105,7 +105,7 @@ export function PackagesManager({ initial }: { initial: PackageState[] }) {
         <button
           type="button"
           onClick={() => setAdding(true)}
-          className="inline-flex h-10 items-center gap-2 rounded-md bg-ink px-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
+          className="inline-flex h-10 items-center gap-2 rounded-md bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
         >
           <Plus className="h-4 w-4" aria-hidden />
           Add package
@@ -151,7 +151,7 @@ export function PackagesManager({ initial }: { initial: PackageState[] }) {
                   type="button"
                   onClick={() => setEditingName(p.slug)}
                   aria-label="Rename package"
-                  className="text-muted transition-colors hover:text-ink"
+                  className="text-muted transition-colors hover:text-accent-strong"
                 >
                   <Pencil className="h-3.5 w-3.5" aria-hidden />
                 </button>
@@ -228,7 +228,7 @@ export function PackagesManager({ initial }: { initial: PackageState[] }) {
                 />
                 <button
                   type="submit"
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-ink text-paper transition-colors hover:bg-accent"
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-accent text-white transition-colors hover:bg-accent-strong"
                   aria-label="Add inclusion"
                 >
                   <Plus className="h-4 w-4" aria-hidden />
@@ -251,7 +251,7 @@ export function PackagesManager({ initial }: { initial: PackageState[] }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-6 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-accent/15 p-6 backdrop-blur-sm"
             onClick={() => setAdding(false)}
           >
             <motion.div
@@ -275,7 +275,7 @@ export function PackagesManager({ initial }: { initial: PackageState[] }) {
                   type="button"
                   onClick={() => setAdding(false)}
                   aria-label="Close"
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:text-ink"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted hover:text-accent-strong"
                 >
                   <X className="h-4 w-4" aria-hidden />
                 </button>
@@ -320,14 +320,14 @@ export function PackagesManager({ initial }: { initial: PackageState[] }) {
                 <div className="flex gap-3 pt-2">
                   <button
                     type="submit"
-                    className="inline-flex h-11 items-center rounded-md bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                    className="inline-flex h-11 items-center rounded-md bg-accent px-5 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
                   >
                     Add package
                   </button>
                   <button
                     type="button"
                     onClick={() => setAdding(false)}
-                    className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm text-muted transition-colors hover:border-ink hover:text-ink"
+                    className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm text-muted transition-colors hover:border-accent hover:text-accent-strong"
                   >
                     Cancel
                   </button>

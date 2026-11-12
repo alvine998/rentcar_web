@@ -68,7 +68,7 @@ export function PricingRules({ sampleBase }: { sampleBase: number }) {
                 max={300}
                 step={5}
                 onChange={(e) => setMultiplier(i, Number(e.target.value))}
-                className="h-9 w-full rounded-md border border-line px-2 font-mono text-sm outline-none focus:border-ink"
+                className="h-9 w-full rounded-md border border-line px-2 font-mono text-sm outline-none focus:border-accent"
               />
               <span className="text-xs text-muted">%</span>
             </div>
@@ -162,7 +162,7 @@ export function PricingRules({ sampleBase }: { sampleBase: number }) {
           </label>
           <button
             type="submit"
-            className="inline-flex h-9 items-center gap-2 rounded-md bg-ink px-4 text-sm font-medium text-paper transition-colors hover:bg-accent"
+            className="inline-flex h-9 items-center gap-2 rounded-md bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-strong"
           >
             <Plus className="h-4 w-4" aria-hidden />
             Add holiday
