@@ -2,7 +2,7 @@ import type { Dictionary } from "./en";
 
 export const zh: Dictionary = {
   meta: {
-    title: "Nusa Rentcar — 雅加达租车，价格透明",
+    title: "ANWA TRANS — 雅加达租车",
     description:
       "在雅加达租用干净新款的车辆，每日 Rp 275.000 起，自驾或配专业司机。10 公里内免费送车，15 分钟内确认预订。",
   },
@@ -21,14 +21,14 @@ export const zh: Dictionary = {
     language: "语言",
   },
   footer: {
-    brandLine: "雅加达 · 创立于 2018",
+    brandLine: "Alur Nyaman, Wujud Amanah",
     description:
-      "自 2018 年起在雅加达提供简单透明的租车服务。卢比标价清晰，车队由我们自行保养，客服随时接听电话。",
+      "Nyaman Armadanya, Jelas Aturannya。ANWA TRANS 在雅加达提供透明价格、保养完善的车队和清晰明确的租赁条款。",
     explore: "浏览",
     packages: "套餐",
     contact: "联系方式",
-    addressLine1: "Jl. Panglima Polim Raya No. 24",
-    addressLine2: "Kebayoran Baru, 雅加达南部 12160",
+    addressLine1: "Jl. Papanggo 2D No. 12",
+    addressLine2: "Tanjung Priok, 雅加达北部 — 印多玛瑞特对面",
     phone: "(021) 7208 8456",
     email: "halo@nusarentcar.id",
     hours: "营业时间 08.00 – 21.00 WIB · 道路救援 24/7",
@@ -327,7 +327,7 @@ export const zh: Dictionary = {
     label: "关于我们",
     title: "一家依然会接电话的租车公司。",
     description:
-      "Nusa Rentcar 成立于 2018 年，起步于 Kebayoran Baru 的六辆车和一间维修车间。如今我们运营 120 辆车服务全雅加达，但做事的方式从未改变：车辆保养诚实，价格清晰可读，认真对待每一笔预订。",
+      "ANWA TRANS 致力于让雅加达租车更简单。我们的原则很直接：诚实保养车队、清楚透明地标示价格，并对每一笔预订做好说明。",
     talkToUs: "与我们聊聊",
     imageCaption: "每 5,000 公里在自有车间保养",
     story: {
@@ -449,9 +449,9 @@ export const zh: Dictionary = {
     ],
     office: {
       label: "办公室",
-      line1: "Jl. Panglima Polim Raya No. 24",
-      line2: "Kebayoran Baru, 雅加达南部 12160",
-      note: "每天营业 08.00 – 21.00 WIB。大楼后方设有停车场。",
+      line1: "Jl. Papanggo 2D No. 12",
+      line2: "Tanjung Priok, 雅加达北部 — 印多玛瑞特对面",
+      note: "每天营业 08.00 – 21.00 WIB。就在印多玛瑞特对面，位置容易找到。",
     },
   },
 };

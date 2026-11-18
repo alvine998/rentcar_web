@@ -1,6 +1,6 @@
 export const en = {
   meta: {
-    title: "Nusa Rentcar — Jakarta Car Rental, Honest Rates",
+    title: "ANWA TRANS — Jakarta Car Rental",
     description:
       "Rent clean, late-model cars in Jakarta from Rp 275.000/day, self-drive or with a professional chauffeur. Free delivery within 10 km and booking confirmed within 15 minutes.",
   },
@@ -19,14 +19,14 @@ export const en = {
     language: "Language",
   },
   footer: {
-    brandLine: "Jakarta · Est. 2018",
+    brandLine: "Alur Nyaman, Wujud Amanah",
     description:
-      "Straightforward car rental in Jakarta since 2018. Transparent Rupiah rates, a fleet we maintain ourselves, and support that picks up the phone.",
+      "Nyaman Armadanya, Jelas Aturannya. ANWA TRANS provides Jakarta car rental with transparent rates, a maintained fleet, and clear terms.",
     explore: "Explore",
     packages: "Packages",
     contact: "Contact",
-    addressLine1: "Jl. Panglima Polim Raya No. 24",
-    addressLine2: "Kebayoran Baru, Jakarta Selatan 12160",
+    addressLine1: "Jl. Papanggo 2D No. 12",
+    addressLine2: "Tanjung Priok, North Jakarta — in front of Indomaret",
     phone: "(021) 7208 8456",
     email: "halo@nusarentcar.id",
     hours: "Office 08.00 – 21.00 WIB · Roadside 24/7",
@@ -332,7 +332,7 @@ export const en = {
     label: "About us",
     title: "A rental company that still answers the phone.",
     description:
-      "Nusa Rentcar started in 2018 with six cars and one workshop in Kebayoran Baru. Today we run a fleet of 120 units across Jakarta, but the way we work has not changed: keep the cars honest, keep the prices readable, and treat every booking like it matters.",
+      "ANWA TRANS makes car rental in Jakarta straightforward. Our approach starts with a simple principle: maintain the fleet honestly, keep prices readable, and handle every booking clearly.",
     talkToUs: "Talk to us",
     imageCaption: "Serviced every 5,000 km in our own workshop",
     story: {
@@ -454,9 +454,9 @@ export const en = {
     ],
     office: {
       label: "Office",
-      line1: "Jl. Panglima Polim Raya No. 24",
-      line2: "Kebayoran Baru, Jakarta Selatan 12160",
-      note: "Open daily 08.00 – 21.00 WIB. Parking available at the back of the building.",
+      line1: "Jl. Papanggo 2D No. 12",
+      line2: "Tanjung Priok, North Jakarta — in front of Indomaret",
+      note: "Open daily 08.00 – 21.00 WIB. Easy to find in front of Indomaret.",
     },
   },
 };

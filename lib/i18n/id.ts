@@ -2,7 +2,7 @@ import type { Dictionary } from "./en";
 
 export const id: Dictionary = {
   meta: {
-    title: "Nusa Rentcar — Rental Mobil Jakarta, Harga Jujur",
+    title: "ANWA TRANS — Rental Mobil Jakarta",
     description:
       "Sewa mobil bersih dan terawat di Jakarta mulai Rp 275.000/hari, lepas kunci atau dengan sopir profesional. Gratis antar hingga 10 km dan pemesanan dikonfirmasi dalam 15 menit.",
   },
@@ -21,14 +21,14 @@ export const id: Dictionary = {
     language: "Bahasa",
   },
   footer: {
-    brandLine: "Jakarta · Sejak 2018",
+    brandLine: "Alur Nyaman, Wujud Amanah",
     description:
-      "Rental mobil yang mudah dan jujur di Jakarta sejak 2018. Tarif Rupiah yang transparan, armada yang kami rawat sendiri, dan layanan yang selalu mengangkat telepon.",
+      "Nyaman Armadanya, Jelas Aturannya. ANWA TRANS melayani rental mobil di Jakarta dengan tarif transparan, armada terawat, dan proses yang jelas.",
     explore: "Jelajahi",
     packages: "Paket",
     contact: "Kontak",
-    addressLine1: "Jl. Panglima Polim Raya No. 24",
-    addressLine2: "Kebayoran Baru, Jakarta Selatan 12160",
+    addressLine1: "Jl. Papanggo 2D No. 12",
+    addressLine2: "Kec. Tanjung Priok, Jakarta Utara — depan Indomaret",
     phone: "(021) 7208 8456",
     email: "halo@nusarentcar.id",
     hours: "Kantor 08.00 – 21.00 WIB · Bantuan darurat 24/7",
@@ -107,7 +107,7 @@ export const id: Dictionary = {
           quote:
             "Kami pakai paket Premium setiap minggu untuk kunjungan klien. Sopirnya tepat waktu dan hafal kota — beban tim kami jauh berkurang.",
           name: "Anindya Sari",
-          role: "Operasional, Jakarta Selatan",
+          role: "Operasional, Jakarta Utara",
         },
         {
           quote:
@@ -341,7 +341,7 @@ export const id: Dictionary = {
     label: "Tentang kami",
     title: "Perusahaan rental yang masih mengangkat telepon.",
     description:
-      "Nusa Rentcar dimulai pada 2018 dengan enam mobil dan satu bengkel di Kebayoran Baru. Kini kami mengelola 120 unit di seluruh Jakarta, tapi cara kerjanya tidak berubah: rawat mobilnya dengan jujur, tampilkan harga yang mudah dibaca, dan layani setiap pemesanan seperti yang paling penting.",
+      "ANWA TRANS hadir untuk memudahkan rental mobil di Jakarta. Proses kami berangkat dari prinsip yang sederhana: rawat armada dengan jujur, tampilkan harga yang mudah dibaca, dan layani setiap pemesanan dengan jelas.",
     talkToUs: "Hubungi kami",
     imageCaption: "Diservis setiap 5.000 km di bengkel sendiri",
     story: {
@@ -464,9 +464,9 @@ export const id: Dictionary = {
     ],
     office: {
       label: "Kantor",
-      line1: "Jl. Panglima Polim Raya No. 24",
-      line2: "Kebayoran Baru, Jakarta Selatan 12160",
-      note: "Buka setiap hari 08.00 – 21.00 WIB. Parkir tersedia di belakang gedung.",
+      line1: "Jl. Papanggo 2D No. 12",
+      line2: "Kec. Tanjung Priok, Jakarta Utara — depan Indomaret",
+      note: "Buka setiap hari 08.00 – 21.00 WIB. Lokasi mudah dikenali di depan Indomaret.",
     },
   },
 };

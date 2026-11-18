@@ -23,7 +23,7 @@ export async function generateMetadata(
     metadataBase: new URL(SITE_URL),
     title: {
       default: dict.meta.title,
-      template: "%s — Nusa Rentcar",
+      template: "%s — ANWA TRANS",
     },
     description: dict.meta.description,
     alternates: {

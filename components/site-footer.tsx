@@ -27,7 +27,7 @@ export function SiteFooter({
                 <CarFront className="h-5 w-5" aria-hidden />
               </span>
               <span className="text-sm font-semibold tracking-[0.14em]">
-                NUSA RENTCAR
+                ANWA TRANS
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
@@ -105,7 +105,7 @@ export function SiteFooter({
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; 2026 Nusa Rentcar. {footer.rights}</p>
+          <p>&copy; 2026 ANWA TRANS. {footer.rights}</p>
           <p>{footer.photoCredit}</p>
         </div>
       </div>

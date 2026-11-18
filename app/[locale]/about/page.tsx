@@ -61,7 +61,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-line shadow-sm">
                 <Image
                   src="/cars/innova.jpg"
-                  alt="Toyota Kijang Innova — Nusa Rentcar"
+                  alt="Toyota Kijang Innova — ANWA TRANS"
                   fill
                   priority
                   sizes="(min-width: 1024px) 36rem, 92vw"

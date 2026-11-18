@@ -54,7 +54,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </span>
           <div className="leading-tight">
             <p className="text-sm font-semibold tracking-[0.14em]">
-              NUSA RENTCAR
+              ANWA TRANS
             </p>
             <p className="label text-muted">Admin console</p>
           </div>

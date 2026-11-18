@@ -82,7 +82,7 @@ export function SiteHeader({
           </span>
           <span className="leading-tight">
             <span className="block text-sm font-semibold tracking-[0.14em]">
-              NUSA RENTCAR
+              ANWA TRANS
             </span>
             <span className="label block text-muted">{brandLine}</span>
           </span>

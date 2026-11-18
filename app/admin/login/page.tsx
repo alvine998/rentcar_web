@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
             <CarFront className="h-6 w-6" aria-hidden />
           </span>
           <h1 className="mt-5 text-2xl font-semibold tracking-tight">
-            Nusa Rentcar
+            ANWA TRANS
           </h1>
           <p className="label mt-2 text-muted">Admin console</p>
         </div>
@@ -126,7 +126,7 @@ export default function AdminLoginPage() {
         </form>
 
         <p className="mt-6 text-center text-xs text-muted">
-          Nusa Rentcar content management · internal use only
+          ANWA TRANS content management · internal use only
         </p>
       </motion.div>
     </div>

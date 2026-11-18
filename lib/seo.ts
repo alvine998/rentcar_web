@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/i18n/config";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://nusarentcar.id";
-export const SITE_NAME = "Nusa Rentcar";
+export const SITE_NAME = "ANWA TRANS";
 
 const OG_LOCALES: Record<Locale, string> = {
   id: "id_ID",
@@ -68,10 +68,9 @@ export function businessJsonLd() {
     priceRange: "Rp 275.000 – Rp 1.850.000",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Jl. Panglima Polim Raya No. 24",
-      addressLocality: "Jakarta Selatan",
-      addressRegion: "Jakarta",
-      postalCode: "12160",
+      streetAddress: "Jl. Papanggo 2D No. 12",
+      addressLocality: "Tanjung Priok",
+      addressRegion: "Jakarta Utara",
       addressCountry: "ID",
     },
     openingHoursSpecification: {
